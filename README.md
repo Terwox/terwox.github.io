@@ -61,8 +61,10 @@ Doctoral candidate in Humans Factors Psychology.  ABD.  <br>
 *	Specialized in human-computer interaction.
 *	Diss. Topic “Detecting Flow during Games with Psychophysiology.”
     *	This study examines the user experience of people playing a game with EEG.
-	M.A. in Human Factors Psychology, 2015.
+    
+M.A. in Human Factors Psychology, 2015.
 *	Training included card sorts via the SWAT method, persona creation and presentation, and working in Axure.
+
 Bradley University, Peoria, IL.  B.S. in Psychology and Religious Studies.
 
 
