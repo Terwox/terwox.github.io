@@ -22,7 +22,7 @@ Senior UX Researcher
     * Updated personas using large-scale surveys with latent profile analysis.
     * Visualized Markov chains to understand the language and topics used by members in support calls.
 * Skills
-    * UX, R, Qualtrics, interface design, Tobii, Python, eye tracking, UserZoom.com, prototype evaluation, InVision, Jira, JQL, 
+    * UX, R, Qualtrics, interface design, Tobii, Python, eye tracking, UserZoom, prototype evaluation, InVision, Jira, JQL, simply, HTML, Adobe Analytics, generative research, qualitative and quantitative persona creation, expert review. 
 
 
  **Microsoft**, Redmond, WA. <br>
