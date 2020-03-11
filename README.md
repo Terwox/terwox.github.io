@@ -12,7 +12,7 @@ UX researcher with industry experience in data visualization, healthcare, and co
 ### Relevant Experience 
 ___
 **Express Scripts**, St. Louis, MO.  
-*August 2019 - Present* <br>
+*July 2019 - Present* <br>
 Senior UX Researcher
 
 * Duties: Usability
