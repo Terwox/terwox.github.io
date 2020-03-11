@@ -17,7 +17,7 @@ Senior UX Researcher
 
 * Duties: Usability
     * Supported designs for web and mobile interfaces for Accredo, a pharmacy delivering complex medications to members.  
-    * Served as the eye-tracking expert, helped setup the labotory, trained researchers, and determined testing procedures.
+    * Served as the eye-tracking expert, helped setup the labotory, trained researchers, and established testing procedures.
 * Data science
     * Updated personas using large-scale surveys with latent profile analysis.
     * Visualized Markov chains to understand the language and topics used by members in support calls.
