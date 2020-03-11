@@ -1,11 +1,3 @@
----
-comments:       false
-showMeta:       false
-showActions:    false
----
-
-
-
 # James Myers &ndash; UX Researcher
 [james.myers@usd.edu](mailto:james.myers@usd.edu) | 
 [(309) 643-7457](tel:3096437457)
