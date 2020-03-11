@@ -55,7 +55,7 @@ UX Researcher<br>
 *	Skills:  UX, Cx, interface design, R, SPSS text analytics, statistics, web scraping, automation, heuristic analyses, human factors engineering, factor analysis, competitive and comparative research, a/b testing, in-store research.
 
 
-**Education**<br>
+###Education<br>
 	University of South Dakota, Vermillion, SD.<br>
 	Doctoral candidate in Humans Factors Psychology.  ABD.  <br>
 *	Specialized in human-computer interaction.
@@ -66,13 +66,13 @@ UX Researcher<br>
 	Bradley University, Peoria, IL.  B.S. in Psychology and Religious Studies.
 
 
-**Computer Skills**<br>
+###Computer Skills<br>
 	Programming languages:  R, MATLAB, SPSS, VB, HTML, familiarity w/ Python, C++, PHP, Assembly, and Android.
 	Operating Systems:  Windows 10 through 3.11, DOS.  Some Mac and Linux experience.
 	Applications:  MS Office (Excel, Word, PowerPoint, Visio, Outlook,) MS Access, Axure, InVision, Clarabridge, Photoshop, Tableau, Figma, Power BI, Ultra Fractal
 
 
-**Other Experience**<br>
+###Other Experience<br>
 *	Direct care for adults with dev. disabilities.  Behavior program oversight.  1 year.
 *	IT support help desk and on-site.  3 years.
 *	Inventory management and RMA oversight for wind energy in three states.  1 year.
