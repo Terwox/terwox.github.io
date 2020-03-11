@@ -56,26 +56,23 @@ UX Researcher<br>
 
 
 ### Education
-___
-	University of South Dakota, Vermillion, SD.<br>
-	Doctoral candidate in Humans Factors Psychology.  ABD.  <br>
+University of South Dakota, Vermillion, SD.<br>
+Doctoral candidate in Humans Factors Psychology.  ABD.  <br>
 *	Specialized in human-computer interaction.
 *	Diss. Topic “Detecting Flow during Games with Psychophysiology.”
     *	This study examines the user experience of people playing a game with EEG.
 	M.A. in Human Factors Psychology, 2015.
 *	Training included card sorts via the SWAT method, persona creation and presentation, and working in Axure.
-	Bradley University, Peoria, IL.  B.S. in Psychology and Religious Studies.
+Bradley University, Peoria, IL.  B.S. in Psychology and Religious Studies.
 
 
 ### Computer Skills
-___
-	Programming languages:  R, MATLAB, SPSS, VB, HTML, familiarity w/ Python, C++, PHP, Assembly, and Android.
-	Operating Systems:  Windows 10 through 3.11, DOS.  Some Mac and Linux experience.
-	Applications:  MS Office (Excel, Word, PowerPoint, Visio, Outlook,) MS Access, Axure, InVision, Clarabridge, Photoshop, Tableau, Figma, Power BI, Ultra Fractal
+Programming languages:  R, MATLAB, SPSS, VB, HTML, familiarity w/ Python, C++, PHP, Assembly, and Android.
+Operating Systems:  Windows 10 through 3.11, DOS.  Some Mac and Linux experience.
+Applications:  MS Office (Excel, Word, PowerPoint, Visio, Outlook,) MS Access, Axure, InVision, Clarabridge, Photoshop, Tableau, Figma, Power BI, Ultra Fractal
 
 
 ### Other Experience
-___
 *	Direct care for adults with dev. disabilities.  Behavior program oversight.  1 year.
 *	IT support help desk and on-site.  3 years.
 *	Inventory management and RMA oversight for wind energy in three states.  1 year.
