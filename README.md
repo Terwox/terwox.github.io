@@ -24,6 +24,7 @@ Senior UX Researcher
 * Skills
     * UX, R, Qualtrics, interface design, Tobii, Python, eye tracking, UserZoom, prototype evaluation, InVision, Jira, JQL, simply, HTML, Adobe Analytics, generative research, qualitative and quantitative persona creation, expert review. 
 
+
 **Microsoft**, Redmond, WA. <br>
 *April 2018 - June 2019* <br>
 UX Researcher <br>
@@ -34,6 +35,7 @@ UX Researcher <br>
     * Created narrative data visualizations in R for stakeholders. Gathered data. Researched employee experience primary sources and internal data. Created telemetry frameworks for engineers to implement.  Analyzed software telemetry with Kusto. Analyzed data from surveys with thousands of participants.
 * Skills
     * UX, R, Qualtrics, StatsIQ, interface design, heuristics, human factors engineering, Ovo, mobile research, recruiting, eye tracking, dashboards, Sharepoint, Onedrive, telemetry, UserTesting.com, Power BI, moderated and unmoderated studies, prototype evaluation, impact analysis, Kusto, KQL, Figma.
+
 
 **D2 aka Documents & Design**, North Sioux City, SD.<br>
 *September 2015 - August 2017* <br>
@@ -52,6 +54,7 @@ UX Researcher<br>
     *	Led a team implementing an android app to help users setup a newly purchased tablet.  HTML changes, along with minor android code editing.
 *	Skills:  UX, Cx, interface design, R, SPSS text analytics, statistics, web scraping, automation, heuristic analyses, human factors engineering, factor analysis, competitive and comparative research, a/b testing, in-store research.
 
+
 **Education**<br>
 	University of South Dakota, Vermillion, SD.<br>
 	Doctoral candidate in Humans Factors Psychology.  ABD.  <br>
@@ -62,10 +65,12 @@ UX Researcher<br>
 *	Training included card sorts via the SWAT method, persona creation and presentation, and working in Axure.
 	Bradley University, Peoria, IL.  B.S. in Psychology and Religious Studies.
 
+
 **Computer Skills**<br>
 	Programming languages:  R, MATLAB, SPSS, VB, HTML, familiarity w/ Python, C++, PHP, Assembly, and Android.
 	Operating Systems:  Windows 10 through 3.11, DOS.  Some Mac and Linux experience.
 	Applications:  MS Office (Excel, Word, PowerPoint, Visio, Outlook,) MS Access, Axure, InVision, Clarabridge, Photoshop, Tableau, Figma, Power BI, Ultra Fractal
+
 
 **Other Experience**<br>
 *	Direct care for adults with dev. disabilities.  Behavior program oversight.  1 year.
