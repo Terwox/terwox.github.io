@@ -65,7 +65,7 @@ UX Researcher<br>
 **Computer Skills**<br>
 	Programming languages:  R, MATLAB, SPSS, VB, HTML, familiarity w/ Python, C++, PHP, Assembly, and Android.
 	Operating Systems:  Windows 10 through 3.11, DOS.  Some Mac and Linux experience.
-	Applications:  MS Office (Excel, Word, PowerPoint, Visio, Outlook,) MS Access, Axure, InVision, Clarabridge, Photoshop, Tableau, Figma, Power BI
+	Applications:  MS Office (Excel, Word, PowerPoint, Visio, Outlook,) MS Access, Axure, InVision, Clarabridge, Photoshop, Tableau, Figma, Power BI, Ultra Fractal
 
 **Other Experience**
 *	Direct care for adults with dev. disabilities.  Behavior program oversight.  1 year.
