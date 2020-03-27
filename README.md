@@ -92,6 +92,7 @@ Applications:  MS Office (Excel, Word, PowerPoint, Visio, Outlook,) MS Access, A
 
 
 ### Other Experience
+*  Psychology research assistant (not focused on UX/HCI.)  2 years.
 *	Direct care for adults with dev. disabilities.  Behavior program oversight.  1 year.
 *	IT support help desk and on-site.  3 years.
 *	Inventory management and RMA oversight for wind energy in three states.  1 year.
