@@ -21,7 +21,7 @@ Senior UX Researcher
     * Updated personas using large-scale surveys with latent profile analysis.
     * Visualized Markov chains to understand the language and topics used by members in support calls.
 * Skills
-    * UX, R, Qualtrics, interface design, Tobii, Python, eye tracking, UserZoom, prototype evaluation, InVision, Jira, JQL, simply, HTML, Adobe Analytics, generative research, qualitative and quantitative persona creation, expert review. 
+    * UX, R, Qualtrics, interface design, Tobii, Python, eye tracking, UserZoom, prototype evaluation, InVision, Jira, JQL, simply, HTML, Adobe Analytics, generative research, qualitative and quantitative persona creation, expert review, Git. 
 
 
 **Microsoft**, Redmond, WA. <br>
@@ -53,6 +53,23 @@ UX Researcher<br>
     *	Led a team implementing an android app to help users setup a newly purchased tablet.  HTML changes, along with minor android code editing.
 *	Skills:  UX, Cx, interface design, R, SPSS text analytics, statistics, web scraping, automation, heuristic analyses, human factors engineering, factor analysis, competitive and comparative research, a/b testing, in-store research.
 
+**University of South Dakota**, Vermillion, SD.<br>
+*September 2012 - September 2015*<br>
+Research Assistant<br>
+*  Duties: HCI/Usability
+    *    Led an accessibility study on branding under recursive blur conditions to study legibility under simualted low vision conditions.
+    *    Worked on the perception of wait times under different loading indicators.
+    *    Wrote software to automate information retrieval from Google nGram Viewer's API.
+* Skills:  R, HCI, research, web scraping, automation, psychophysiology, negative binomial regression.
+
+**University of South Dakota**, Vermillion, SD.<br>
+*September 2010 - September 2012*<br>
+Teaching Assistant<br>
+* Duties: Teaching
+    *    Taught R to doctoral students, focusing on methods used in clinical psychology, e.g., ANOVA and linear regression.
+    *    Taught statistics to undergraduate students.
+    *    Wrote software to automate grade entry for the department.<br>
+*  Skills:  R, VBA, statistics, teaching.
 
 ### Education
 University of South Dakota, Vermillion, SD.<br>
