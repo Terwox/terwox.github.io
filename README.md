@@ -47,7 +47,7 @@ UX Researcher<br>
     *	Gathered data, developed surveys, distributed surveys through online and face to face methods to hundreds of participants, analyzed data, and presented results to a variety of stakeholders, including cross-cultural international presentations.  Utilized surveymonkey.com.
 *	Tech writer team management
     *	Oversaw teams of writer and graphic designer pairs who worked on technical documentation ensuring good training materials for products.
-*	Office automation.
+*	Office automation
     *	Programmed with VBA to speed data entry and processing.
 *	Web app development.
     *	Led a team implementing an android app to help users setup a newly purchased tablet.  HTML changes, along with minor android code editing.
