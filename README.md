@@ -49,7 +49,7 @@ UX Researcher<br>
     *	Oversaw teams of writer and graphic designer pairs who worked on technical documentation ensuring good training materials for products.
 *	Office automation
     *	Programmed with VBA to speed data entry and processing.
-*	Web app development.
+*	Web app development
     *	Led a team implementing an android app to help users setup a newly purchased tablet.  HTML changes, along with minor android code editing.
 *	Skills:  UX, Cx, interface design, R, SPSS text analytics, statistics, web scraping, automation, heuristic analyses, human factors engineering, factor analysis, competitive and comparative research, a/b testing, in-store research.
 
