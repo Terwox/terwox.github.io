@@ -5,4 +5,4 @@ permalink: /portfolio/
 ---
 
 this is content
-![sentiment in alice.png]Alice
+![Alice](sentiment in alice.png)
