@@ -4,6 +4,6 @@ title: "Portfolio"
 permalink: /portfolio/
 ---
 
-this is content
+this is content  
 
 ![Alice](sentiment in alice.png)
