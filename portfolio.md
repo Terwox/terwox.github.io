@@ -4,6 +4,8 @@ title: "Portfolio"
 permalink: /portfolio/
 ---
 
-this is content  
+Content without context!
 
 ![Alice](sentiment in alice.png)
+
+![Bubbles](workspace pain points.png)
