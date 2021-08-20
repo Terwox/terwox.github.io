@@ -4,7 +4,7 @@
 UX researcher with industry experience in data visualization, healthcare, and consumer electronics with an academic background in human factors, experimental research, statistics, and psychophysiology. 
 
 * Automated a 40 hour/week data analysis job into a 10 hour/week job.
-* Ran UX tests with a team that helped reduce returned TVs profit losses by $88M for a client.
+* Ran UX tests with a team that helped reduce returned TV profit losses by $88M for a client.
 * Researched product improvements by creating usability tests and managing testing teams.
 
 
