@@ -1,5 +1,7 @@
-# James Myers &ndash; UX Researcher (they/them)
+# James Myers &ndash; UX Researcher 
 [james.myers@usd.edu](mailto:james.myers@usd.edu) 
+
+Pronoun:  they/them
 
 UX researcher with industry experience in data visualization, healthcare, and consumer electronics with an academic background in human factors, experimental research, statistics, and psychophysiology. 
 
