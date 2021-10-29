@@ -1,4 +1,4 @@
-# James Myers &ndash; UX Researcher
+# James Myers &ndash; UX Researcher (they/them)
 [james.myers@usd.edu](mailto:james.myers@usd.edu) 
 
 UX researcher with industry experience in data visualization, healthcare, and consumer electronics with an academic background in human factors, experimental research, statistics, and psychophysiology. 
@@ -79,14 +79,12 @@ Doctoral candidate in Humans Factors Psychology.  ABD.  <br>
     *	This study examines the user experience of people playing a game with EEG.
     
 M.A. in Human Factors Psychology, 2015.
-*	Training included card sorts via the SWAT method, persona creation and presentation, and working in Axure.
 
 Bradley University, Peoria, IL.  B.S. in Psychology and Religious Studies.
 
 
 ### Computer Skills
 Programming languages:  R, MATLAB, SPSS, VB, HTML, familiarity w/ Python, C++, PHP, Assembly, and Android.
-Operating Systems:  Windows 10 through 3.11, DOS.  Some Mac and Linux experience.
 
 Applications:  MS Office (Excel, Word, PowerPoint, Visio, Outlook,) MS Access, Axure, InVision, Clarabridge, Photoshop, Tableau, Figma, Power BI, Ultra Fractal
 
