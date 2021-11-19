@@ -24,7 +24,7 @@ Senior Mixed Methods Researcher
     * Updated personas using large-scale surveys with latent profile analysis.
     * Visualized Markov chains to understand the language and topics used by members in support calls.
 * Skills
-    * UX, R, Qualtrics, interface design, Tobii, Python, eye tracking, UserZoom, prototype evaluation, InVision, Jira, JQL, simply, HTML, Adobe Analytics, generative research, qualitative and quantitative persona creation, expert review, Git. 
+    * UX, R, Qualtrics, interface design, Tobii, Python, eye tracking, UserZoom, prototype evaluation, InVision, Jira, JQL, simply, HTML, Adobe Analytics, generative research, qualitative and quantitative persona creation, expert review, Git, user flows, scenarios, service blueprints. 
 
 
 **Microsoft**, Redmond, WA. <br>
@@ -91,7 +91,7 @@ Bradley University, Peoria, IL.  B.S. in Psychology and Religious Studies.
 ### Computer Skills
 Programming languages:  R, MATLAB, SPSS, VB, HTML, familiarity w/ Python, C++, PHP, Assembly, and Android.
 
-Applications:  MS Office (Excel, Word, PowerPoint, Visio, Outlook,) MS Access, Axure, InVision, Clarabridge, Photoshop, Tableau, Figma, Power BI, Ultra Fractal
+Applications:  MS Office (Excel, Word, PowerPoint, Visio, Outlook,) MS Access, Axure, InVision, Clarabridge, Photoshop, Tableau, Figma, Power BI, Ultra Fractal, Lucidchart, Mural, Miro.
 
 
 ### Other Experience
