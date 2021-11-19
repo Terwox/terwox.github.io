@@ -1,4 +1,4 @@
-# James Myers &ndash; UX Researcher 
+# James Myers &ndash; Mixed Methods Researcher 
 [james.myers@usd.edu](mailto:james.myers@usd.edu) 
 
 Pronouns:  they/them
@@ -12,11 +12,12 @@ UX researcher with industry experience in data visualization, healthcare, and co
 
 ### Relevant Experience 
 ___
-**Express Scripts**, St. Louis, MO.  
+**Cigna**, Remote.  
 *July 2019 - Present* <br>
-Senior UX Researcher
+Senior Mixed Methods Researcher
 
 * Duties: Usability
+    * Managed a team of 3 to update journey maps and personas using qualitative and quantitative methods.
     * Researched designs for web and mobile interfaces for Accredo, a pharmacy delivering complex medications to members.  
     * Served as the eye-tracking expert, helped setup the labotory, trained researchers, and established testing procedures.
 * Data science
@@ -40,7 +41,7 @@ UX Researcher <br>
 
 **D2 aka Documents & Design**, North Sioux City, SD.<br>
 *September 2015 - August 2017* <br>
-UX Researcher<br>
+Mixed Methods Researcher<br>
 *	Duties:  Usability
     * Managed and worked on UX research teams, working primarily on consumer electronics and informational software, as well as household appliances.
 *	Data analysis
@@ -55,14 +56,16 @@ UX Researcher<br>
     *	Led a team implementing an android app to help users setup a newly purchased tablet.  HTML changes, along with minor android code editing.
 *	Skills:  UX, Cx, interface design, R, SPSS text analytics, statistics, web scraping, automation, heuristic analyses, human factors engineering, factor analysis, competitive and comparative research, a/b testing, in-store research.
 
+
 **University of South Dakota**, Vermillion, SD.<br>
 *September 2012 - September 2015*<br>
-Research Assistant<br>
+UX Research Assistant<br>
 *  Duties: HCI/Usability
     *    Led an accessibility study on branding under recursive blur conditions to study legibility under simualted low vision conditions.
     *    Worked on the perception of wait times under different loading indicators.
     *    Wrote software to automate information retrieval from Google nGram Viewer's API.
 * Skills:  R, HCI, research, web scraping, automation, psychophysiology, negative binomial regression.
+
 
 **University of South Dakota**, Vermillion, SD.<br>
 *September 2010 - September 2012*<br>
