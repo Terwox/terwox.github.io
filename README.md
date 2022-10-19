@@ -36,7 +36,7 @@ UX Researcher <br>
 * Data science
     * Created narrative data visualizations in R for stakeholders. Gathered data. Researched employee experience primary sources and internal data. Created telemetry frameworks for engineers to implement.  Analyzed software telemetry with Kusto. Analyzed data from surveys with thousands of participants.
 * Skills
-    * UX, R, Qualtrics, StatsIQ, interface design, heuristics, human factors engineering, Ovo, mobile research, recruiting, eye tracking, dashboards, Sharepoint, Onedrive, telemetry, UserTesting.com, Power BI, moderated and unmoderated studies, prototype evaluation, impact analysis, Kusto, KQL, Figma.
+    * UX, R, Qualtrics, StatsIQ, interface design, heuristics, human factors engineering, Ovo, mobile research, recruiting, eye tracking, dashboards, SharePoint, Onedrive, telemetry, UserTesting.com, Power BI, moderated and unmoderated studies, prototype evaluation, impact analysis, Kusto, KQL, Figma.
 
 
 **D2 aka Documents & Design**, North Sioux City, SD.<br>
