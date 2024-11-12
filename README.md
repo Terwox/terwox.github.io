@@ -17,14 +17,15 @@ ___
 Senior Mixed Methods Researcher
 
 * Duties: Usability
+    * Setting team strategy and project prioritization for senior leadership using digital feedback.
     * Managed a team of 3 to update journey maps and personas using qualitative and quantitative methods.
     * Researched designs for web and mobile interfaces for Accredo, a pharmacy delivering complex medications to members.  
-    * Served as the eye-tracking expert, helped setup the labotory, trained researchers, and established testing procedures.
+    * Served as the eye-tracking expert, helped set up the laboratory, trained researchers, and established testing procedures.
 * Data science
     * Updated personas using large-scale surveys with latent profile analysis.
     * Visualized Markov chains to understand the language and topics used by members in support calls.
 * Skills
-    * UX, R, Qualtrics, interface design, Tobii, Python, eye tracking, UserZoom, prototype evaluation, InVision, Jira, JQL, simply, HTML, Adobe Analytics, generative research, qualitative and quantitative persona creation, expert review, Git, user flows, scenarios, service blueprints. 
+    * UX, R, Qualtrics, interface design, Tobii, Python, eye tracking, UserZoom, prototype evaluation, InVision, Jira, JQL, HTML, Adobe Analytics, generative research, qualitative and quantitative persona creation, expert review, Git, user flows, scenarios, service blueprints, Databricks, Tableau, UserTesting.com, Figma. 
 
 
 **Microsoft**, Redmond, WA. <br>
