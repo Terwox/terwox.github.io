@@ -1,3 +1,14 @@
 theme: jekyll-theme-cayman
-description: Cthonic UX Résumé
 title: James Myers
+description: Mixed Methods Researcher
+
+# Permalinks
+permalink: pretty
+
+# Exclude from build
+exclude:
+  - README-resume.md
+  - .omc/
+  - "*.pptx"
+  - Gemfile
+  - Gemfile.lock

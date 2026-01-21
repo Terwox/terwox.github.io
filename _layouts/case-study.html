@@ -1,0 +1,38 @@
+---
+layout: default
+---
+
+<div class="case-study">
+  <a href="{{ '/portfolio/' | relative_url }}" class="back-link">Back to Portfolio</a>
+
+  {% if page.meta %}
+  <div class="case-meta">
+    {% if page.meta.role %}
+    <div class="meta-item">
+      <span class="meta-label">Role:</span>
+      <span class="meta-value">{{ page.meta.role }}</span>
+    </div>
+    {% endif %}
+    {% if page.meta.duration %}
+    <div class="meta-item">
+      <span class="meta-label">Duration:</span>
+      <span class="meta-value">{{ page.meta.duration }}</span>
+    </div>
+    {% endif %}
+    {% if page.meta.company %}
+    <div class="meta-item">
+      <span class="meta-label">Company:</span>
+      <span class="meta-value">{{ page.meta.company }}</span>
+    </div>
+    {% endif %}
+    {% if page.meta.tools %}
+    <div class="meta-item">
+      <span class="meta-label">Tools:</span>
+      <span class="meta-value">{{ page.meta.tools }}</span>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {{ content }}
+</div>
