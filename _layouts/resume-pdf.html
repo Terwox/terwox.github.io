@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }}</title>
+  <style>
+    /* ATS-optimized print styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 11pt;
+      line-height: 1.4;
+      color: #000;
+      background: #fff;
+      max-width: 8.5in;
+      margin: 0 auto;
+      padding: 0.5in 0.6in;
+    }
+
+    h1 {
+      font-size: 18pt;
+      font-weight: bold;
+      margin-bottom: 4pt;
+    }
+
+    h2 {
+      font-size: 12pt;
+      font-weight: bold;
+      border-bottom: 1px solid #000;
+      margin-top: 14pt;
+      margin-bottom: 6pt;
+      padding-bottom: 2pt;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: 11pt;
+      font-weight: bold;
+      margin-top: 8pt;
+      margin-bottom: 2pt;
+    }
+
+    p {
+      margin-bottom: 6pt;
+    }
+
+    .contact {
+      font-size: 10pt;
+      margin-bottom: 6pt;
+    }
+
+    .summary {
+      margin-bottom: 8pt;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .job-title {
+      font-style: italic;
+    }
+
+    .job-date {
+      font-size: 10pt;
+    }
+
+    ul {
+      margin-left: 18pt;
+      margin-bottom: 6pt;
+    }
+
+    li {
+      margin-bottom: 3pt;
+    }
+
+    .skills-section p {
+      margin-bottom: 4pt;
+    }
+
+    strong {
+      font-weight: bold;
+    }
+
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+
+    /* No headers, footers, or page numbers for ATS */
+    @page {
+      margin: 0;
+    }
+
+    @media print {
+      body {
+        padding: 0.4in 0.5in;
+      }
+    }
+  </style>
+</head>
+<body>
+  {{ content }}
+</body>
+</html>
