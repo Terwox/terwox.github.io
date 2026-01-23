@@ -1,58 +1,91 @@
 ---
 layout: case-study
 title: Healthcare Persona Development
-description: Mixed methods persona research at scale
+description: Mixed methods persona research combining LPA with qualitative validation
 meta:
   role: Lead Researcher
   duration: 2021
   company: Cigna
-  tools: R, Latent Profile Analysis, Qualtrics, Qualitative Interviews
+  tools: R, Latent Profile Analysis, Qualtrics, In-depth Interviews
 ---
 
 # Healthcare Persona Development
 
-## Problem
+## The Problem
 
-Healthcare organizations often rely on demographic segmentation (age, income, geography) to understand their members. But demographics don't capture what actually drives healthcare behavior — attitudes toward medication, trust in providers, health literacy, and life circumstances.
+Healthcare organizations typically segment members by demographics — age, income, geography, condition. But demographics don't predict behavior. A 65-year-old with diabetes and a 35-year-old with diabetes may have more in common behaviorally than two 65-year-olds with different attitudes toward self-management.
 
-The existing personas were outdated and based primarily on assumptions rather than data.
+The existing personas were based on stakeholder assumptions, not data. Product teams were making decisions based on archetypes that didn't reflect actual member diversity.
+
+## Why Latent Profile Analysis
+
+Traditional persona methods have a fundamental flaw: researchers decide the segments upfront, then find data to support them. This embeds assumptions into the output.
+
+**Latent Profile Analysis (LPA)** inverts this:
+
+| Traditional Approach | LPA Approach |
+|---------------------|--------------|
+| Define segments first, then validate | Let data reveal natural groupings |
+| Researcher decides number of personas | Statistical fit indices determine optimal count |
+| Risk of confirmation bias | Clusters emerge from response patterns |
+| Segments reflect assumptions | Segments reflect actual behavioral variation |
+
+LPA was the right choice because we needed personas that would survive contact with reality — segments grounded in measurable behavioral differences, not marketing intuitions.
 
 ## Approach
 
-I led a mixed methods research initiative combining quantitative segmentation with qualitative depth.
-
 ### Phase 1: Quantitative Segmentation
 
-**Large-scale survey** administered to thousands of members, measuring:
-- Health attitudes and beliefs
-- Medication adherence patterns
-- Communication preferences
-- Trust in healthcare system
-- Life circumstances and stressors
+**Large-scale survey** measuring behavioral and attitudinal dimensions:
 
-**Latent Profile Analysis (LPA)** to identify naturally occurring segments based on response patterns, rather than imposing predetermined categories.
+- Health self-efficacy and locus of control
+- Medication adherence patterns and barriers
+- Communication channel preferences
+- Trust in healthcare providers and systems
+- Life circumstances affecting healthcare engagement
+
+**Analysis:**
+
+- Exploratory LPA to test 2-6 profile solutions
+- Model selection based on BIC, entropy, and interpretability
+- Final model validated through bootstrap resampling
 
 ### Phase 2: Qualitative Validation
 
-**In-depth interviews** with members from each identified segment to:
-- Validate that segments reflected real behavioral differences
-- Understand the "why" behind the quantitative patterns
-- Gather narrative detail for persona development
-- Identify unmet needs and pain points
+**In-depth interviews** with members classified into each profile to:
 
-### Phase 3: Persona Development
+- Confirm that statistical segments mapped to lived experience
+- Understand the causal mechanisms behind behavioral patterns
+- Surface pain points and unmet needs invisible in survey data
+- Gather narrative detail that brings personas to life
 
-Synthesized quantitative and qualitative findings into actionable personas including:
-- Demographic profile (descriptive, not defining)
-- Behavioral patterns
-- Motivations and goals
-- Pain points and barriers
-- Communication preferences
-- Design implications
+This phase was essential because LPA tells you *that* groups differ — interviews tell you *why*.
 
-## Key Insight
+### Phase 3: Persona Synthesis
 
-The analysis revealed that **attitude toward self-management** was a stronger predictor of healthcare behavior than traditional demographic factors. Members who saw themselves as active participants in their health had fundamentally different needs than those who preferred to defer to providers — regardless of age, income, or condition.
+Each persona was built on:
+
+- **Quantitative foundation:** Behavioral indicators with measurable differences between segments
+- **Qualitative depth:** Motivations, mental models, and journey context
+- **Design implications:** Specific recommendations for product and content teams
+
+## Key Finding
+
+**Attitude toward self-management** emerged as the primary differentiator — more predictive than demographics, condition type, or tenure with the pharmacy.
+
+Members who saw themselves as active participants in their healthcare had fundamentally different needs:
+
+- Wanted detailed information and self-service tools
+- Frustrated by paternalistic communication
+- Valued transparency about costs and alternatives
+
+Members who preferred to defer to providers:
+
+- Wanted guidance and reassurance
+- Overwhelmed by too many options
+- Valued relationship with care team over self-service efficiency
+
+This insight shifted the product strategy from "one experience optimized for efficiency" to "adaptive experiences that meet members where they are."
 
 ## Deliverables
 
@@ -60,15 +93,17 @@ The analysis revealed that **attitude toward self-management** was a stronger pr
 - Segment sizing and distribution across the member population
 - Journey maps for each persona through key healthcare touchpoints
 - Design recommendations for persona-specific communication strategies
+- Segment classifier for applying personas to new members
 
 ## Impact
 
-The personas were adopted by multiple teams across the organization to inform:
-- Digital product design
-- Member communication strategies
-- Service design for pharmacy operations
-- Content strategy and health education
+The personas became a shared language across teams:
+
+- **Product:** Persona-specific feature prioritization
+- **Design:** Adaptive UX patterns based on member type
+- **Content:** Tailored communication tone and information density
+- **Operations:** Service design for different engagement preferences
 
 ---
 
-*Details sanitized for confidentiality.*
+*Sample sizes and specific metrics sanitized for confidentiality.*

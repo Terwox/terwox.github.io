@@ -11,7 +11,7 @@ meta:
 
 # Microsoft Employee Experience Research
 
-A collection of data visualization and analysis work from my time at Microsoft, focused on understanding and communicating employee experience insights.
+Research and data visualization work focused on turning large-scale employee survey data into actionable insights for leadership. The challenge: thousands of open-ended responses and Likert-scale ratings needed to become clear priorities that facilities, HR, and leadership could act on.
 
 ---
 
@@ -34,9 +34,9 @@ Created a bubble chart visualization showing:
 <p class="caption">Pain point visualization showing frequency vs. severity</p>
 </div>
 
-### Key Finding
+### Outcome
 
-The primary story: **distractions in physical workspace** dominated as the top pain point — high frequency, high severity, high response count. This provided clear direction for facilities and workplace teams.
+The visualization made priorities undeniable: **workspace distractions** dominated — high frequency, high severity, high response count. This gave facilities leadership a clear mandate and data-backed justification for workplace redesign investments.
 
 ---
 
@@ -95,23 +95,11 @@ This revealed that open plan employees reported significantly higher distraction
 
 ---
 
-## Psychophysiology and Flow
+## Methods Reflection
 
-### Problem
+This work demonstrated the power of **visualization as a research deliverable**. The same data in a table would have been ignored; presented visually with clear priority axes, it drove facilities planning decisions.
 
-Survey data captures what people *say* about their experience, but not necessarily their actual cognitive and emotional states during work.
-
-### Research Direction
-
-Explored the use of psychophysiological measures (building on my dissertation research) to understand flow states and deep work in the enterprise context.
-
----
-
-## Kegerator UX
-
-A lighter project: Improving the user experience of Microsoft's office kegerators.
-
-Sometimes UX research is serious enterprise strategy. Sometimes it's making sure people can easily get a beer after work.
+Key approach: Always design visualizations that make the recommended action obvious. If stakeholders have to interpret, they'll interpret wrong.
 
 ---
 
