@@ -1,0 +1,7 @@
+{
+  "active": true,
+  "started_at": "2026-01-23T00:10:28.728Z",
+  "original_prompt": "Open http://localhost:5173 (Argus dashboard). Tell me what you see - specifically: 1) Are there project cards visible? 2) Do any agents show mode badges (ralph, ultrawork, planning)? 3) Do any show task descriptions? 4) Is there a tired indicator showing? Take a screenshot and describe the layout.",
+  "reinforcement_count": 10,
+  "last_checked_at": "2026-01-23T08:36:25.318Z"
+}
