@@ -79,7 +79,7 @@ Mixed methods researcher who bridges quantitative rigor with qualitative depth. 
 **University of South Dakota** | Vermillion, SD
 
 Ph.D. Human Factors Psychology (Defense: March 2026)
-- Dissertation: How users retain information from business intelligence dashboards — mixed methods research combining EEG psychophysiology, eye tracking, and behavioral measures
+- Dissertation: How users retain information from business intelligence dashboards — mixed methods research 
 
 M.A. Human Factors Psychology, 2015
 
