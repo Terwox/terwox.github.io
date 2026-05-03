@@ -8,7 +8,7 @@ description: Mixed Methods Researcher
 
 [james.myers@usd.edu](mailto:james.myers@usd.edu) | they/them
 
-Mixed methods researcher who bridges quantitative rigor with qualitative depth. I turn ambiguous research questions into decisions: persona frameworks that product teams actually use, eye tracking programs that scale org-wide, and statistical models that predict real outcomes. 5+ years leading UX research at Cigna for specialty pharmacy products serving 500K+ members. Dissertation defense March 2026.
+Mixed methods researcher with a Ph.D. in Human Factors Psychology who bridges quantitative rigor with qualitative depth. I turn ambiguous research questions into decisions: persona frameworks that product teams actually use, eye tracking programs that scale org-wide, and statistical models that predict real outcomes. 5+ years leading UX research at Cigna for specialty pharmacy products serving 500K+ members. Ph.D. completed April 2026.
 
 ---
 
@@ -78,8 +78,8 @@ Mixed methods researcher who bridges quantitative rigor with qualitative depth. 
 
 **University of South Dakota** | Vermillion, SD
 
-Ph.D. Human Factors Psychology (Defense: March 2026)
-- Dissertation: How users retain information from business intelligence dashboards — mixed methods research 
+Ph.D. Human Factors Psychology, completed April 2026
+- Dissertation: How users retain information from business intelligence dashboards — mixed methods research combining EEG psychophysiology, eye tracking, and behavioral measures
 
 M.A. Human Factors Psychology, 2015
 
