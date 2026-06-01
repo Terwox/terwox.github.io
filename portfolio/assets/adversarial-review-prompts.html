@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adversarial Review Prompts — Manual Use Guide</title>
+    <style>
+        /* ================================================================
+           Adversarial Review Prompts — sanitized portfolio copy
+           Component styles inspired by a corporate design system.
+           ================================================================ */
+        :root {
+            --primary: #0033FF;
+            --primary-dark: #110081;
+            --primary-surface: #E6EBFF;
+            --neutral-bg: #F4F4F4;
+            --neutral-text: #333333;
+            --neutral-text-secondary: #5C5C5C;
+            --neutral-border: #D6D6D6;
+            --background: #FFFFFF;
+            --font-family: "Value Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-family-serif: "Value Serif Pro", Georgia, serif;
+            --font-mono: "Cascadia Code", "Fira Code", "JetBrains Mono", Consolas, monospace;
+
+            --step-color-fidelity: #E6EBFF;
+            --step-border-fidelity: var(--primary);
+            --step-color-epistemic: #FFF0E0;
+            --step-border-epistemic: #D14905;
+            --step-color-actionability: #E0F2E9;
+            --step-border-actionability: #00874D;
+            --step-color-synthesis: #F3EAFA;
+            --step-border-synthesis: #7E57C2;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--neutral-text);
+            background: var(--neutral-bg);
+            line-height: 1.55;
+            margin: 0;
+            padding: 0;
+        }
+
+        .VoCaiDash-page {
+            max-width: 1060px;
+            margin: 0 auto;
+            padding: 24px 20px 48px;
+            background: var(--background);
+            min-height: 100vh;
+        }
+
+        header {
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-family: var(--font-family-serif);
+            color: var(--primary-dark);
+            font-size: 1.75rem;
+            margin: 0 0 8px;
+        }
+
+        h2 {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            margin: 0 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary-surface);
+        }
+
+        h3 {
+            font-size: 1rem;
+            color: var(--neutral-text);
+            margin: 0 0 8px;
+        }
+
+        h4 {
+            font-size: 0.92rem;
+            margin: 0 0 6px;
+        }
+
+        .VoCaiDash-subtitle {
+            color: var(--neutral-text-secondary);
+            font-size: 0.88rem;
+            margin: 4px 0 0;
+        }
+
+        .VoCaiDash-section {
+            margin: 36px 0;
+        }
+
+        .VoCaiDash-note {
+            font-size: 0.78rem;
+            color: var(--neutral-text-secondary);
+            font-style: italic;
+            margin: 8px 0;
+        }
+
+        p {
+            margin: 0 0 10px;
+            font-size: 0.9rem;
+            color: var(--neutral-text-secondary);
+        }
+
+        /* ================================================================
+           How-to callout
+           ================================================================ */
+        .how-to-box {
+            background: #F9F9FF;
+            border: 1px solid var(--primary-surface);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 16px 0;
+        }
+
+        .how-to-box h3 {
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+
+        .how-to-box ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .how-to-box ol li {
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--neutral-text-secondary);
+        }
+
+        .how-to-box ol li strong {
+            color: var(--neutral-text);
+        }
+
+        /* ================================================================
+           Prompt cards
+           ================================================================ */
+        .prompt-card {
+            border-radius: 12px;
+            padding: 24px 28px;
+            border-left: 5px solid;
+            margin-bottom: 32px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+
+        .prompt-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .prompt-card .prompt-mandate {
+            font-size: 0.92rem;
+            font-style: italic;
+            color: var(--primary-dark);
+            border-left: 3px solid var(--neutral-border);
+            padding-left: 12px;
+            margin: 12px 0 16px;
+        }
+
+        .prompt-card--fidelity {
+            background: var(--step-color-fidelity);
+            border-left-color: var(--step-border-fidelity);
+        }
+        .prompt-card--fidelity h3 { color: var(--primary-dark); }
+
+        .prompt-card--epistemic {
+            background: var(--step-color-epistemic);
+            border-left-color: var(--step-border-epistemic);
+        }
+        .prompt-card--epistemic h3 { color: #8B3500; }
+
+        .prompt-card--actionability {
+            background: var(--step-color-actionability);
+            border-left-color: var(--step-border-actionability);
+        }
+        .prompt-card--actionability h3 { color: #005A36; }
+
+        .prompt-card--synthesis {
+            background: var(--step-color-synthesis);
+            border-left-color: var(--step-border-synthesis);
+        }
+        .prompt-card--synthesis h3 { color: #4A148C; }
+
+        /* Checklist inside prompt cards */
+        .check-section {
+            margin: 12px 0;
+        }
+
+        .check-section h4 {
+            font-size: 0.88rem;
+            color: var(--neutral-text);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .check-section ul {
+            margin: 0;
+            padding-left: 18px;
+            font-size: 0.85rem;
+            color: var(--neutral-text-secondary);
+        }
+
+        .check-section ul li {
+            margin-bottom: 4px;
+        }
+
+        /* ================================================================
+           Copyable prompt blocks
+           ================================================================ */
+        .prompt-block-wrapper {
+            position: relative;
+            margin: 16px 0;
+        }
+
+        .prompt-block-wrapper .copy-label {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--neutral-text-secondary);
+            background: rgba(255,255,255,0.8);
+            padding: 2px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            user-select: none;
+            z-index: 2;
+        }
+
+        .prompt-block-wrapper .copy-label:hover {
+            background: var(--primary-surface);
+            color: var(--primary);
+        }
+
+        .prompt-block {
+            background: #1E1E2E;
+            color: #CDD6F4;
+            border-radius: 8px;
+            padding: 16px 20px;
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            line-height: 1.6;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .prompt-block .comment {
+            color: #6C7086;
+        }
+
+        .prompt-block .placeholder {
+            color: #F9E2AF;
+        }
+
+        .prompt-block .emphasis {
+            color: #89B4FA;
+        }
+
+        /* ================================================================
+           Output format tables
+           ================================================================ */
+        .output-format {
+            margin: 16px 0;
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 0.82rem;
+        }
+
+        .output-format th {
+            background: var(--neutral-bg);
+            text-align: left;
+            padding: 8px 12px;
+            border-bottom: 2px solid var(--neutral-border);
+            font-weight: 600;
+            color: var(--neutral-text);
+        }
+
+        .output-format td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--neutral-border);
+            color: var(--neutral-text-secondary);
+        }
+
+        .output-format code {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            background: var(--neutral-bg);
+            padding: 1px 5px;
+            border-radius: 3px;
+        }
+
+        /* ================================================================
+           Resolution rules
+           ================================================================ */
+        .resolution-rules {
+            display: flex;
+            gap: 12px;
+            margin: 12px 0;
+            flex-wrap: wrap;
+        }
+
+        .resolution-rule {
+            flex: 1;
+            min-width: 200px;
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 0.82rem;
+            border: 1px solid var(--neutral-border);
+        }
+
+        .resolution-rule strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .rule--pass { background: #E0F2E9; }
+        .rule--pass strong { color: #00874D; }
+        .rule--hedge { background: #FFF8E1; }
+        .rule--hedge strong { color: #B8860B; }
+        .rule--cut { background: #FDE8E8; }
+        .rule--cut strong { color: #8B0000; }
+
+        /* ================================================================
+           Tips / sidebar callouts
+           ================================================================ */
+        .tip-box {
+            background: #FFFDE7;
+            border: 1px solid #FFF59D;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin: 16px 0;
+            font-size: 0.85rem;
+        }
+
+        .tip-box strong {
+            color: #F57F17;
+        }
+
+        .warning-box {
+            background: #FDE8E8;
+            border: 1px solid #FFCDD2;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin: 16px 0;
+            font-size: 0.85rem;
+        }
+
+        .warning-box strong {
+            color: #8B0000;
+        }
+
+        /* ================================================================
+           Footer
+           ================================================================ */
+        .VoCaiDash-footer {
+            margin-top: 48px;
+            padding-top: 16px;
+            border-top: 1px solid var(--neutral-border);
+            font-size: 0.78rem;
+            color: var(--neutral-text-secondary);
+        }
+
+        /* ================================================================
+           Responsive
+           ================================================================ */
+        @media (max-width: 768px) {
+            .resolution-rules { flex-direction: column; }
+        }
+
+        @media print {
+            body { background: white; }
+            .prompt-block { background: #F4F4F4; color: #333; border: 1px solid #D6D6D6; }
+            .prompt-card { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+<div class="VoCaiDash-page">
+
+    <header>
+        <h1>Adversarial Review Prompts</h1>
+        <p class="VoCaiDash-subtitle">
+            The three review lenses used in Pass 2 of the VOC pipeline &mdash; with copy-paste prompts for manual use in GitHub Copilot
+        </p>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- HOW TO USE MANUALLY                                           -->
+    <!-- ============================================================ -->
+    <div class="VoCaiDash-section">
+        <h2>Using These Prompts Manually</h2>
+        <p>You don't need the full automated pipeline to benefit from adversarial review. Any time you generate a VOC report (or any analytical narrative), you can run these three lenses manually using GitHub Copilot in VS Code or the web chat.</p>
+
+        <div class="how-to-box">
+            <h3>Step-by-Step: Manual Adversarial Review</h3>
+            <ol>
+                <li><strong>Generate your report as usual</strong> &mdash; use whatever prompts or process you normally follow to produce findings from member feedback.</li>
+                <li><strong>Open a new Copilot chat</strong> &mdash; start a fresh context so the reviewer model doesn't share memory with the generator. This separation is key to catching blind spots.</li>
+                <li><strong>Paste one of the three review prompts below</strong>, followed by your report content (the narrative, data tables, and quotes). Run each lens in a separate chat or sequentially in the same chat.</li>
+                <li><strong>Read the structured critique</strong> &mdash; each lens returns flagged issues in distinct categories (errors, overstatements, gaps, etc.).</li>
+                <li><strong>Apply the resolution rules</strong> &mdash; if a finding survives all 3 lenses, keep it. Fails 1 lens? Hedge it. Fails 2+? Cut or rewrite.</li>
+                <li><strong>(Optional) Run the Synthesis prompt</strong> &mdash; paste the original report + all 3 reviews and let the model produce a revised narrative that resolves the tensions.</li>
+            </ol>
+        </div>
+
+        <div class="tip-box">
+            <strong>Tip:</strong> You can run just ONE lens if you're short on time. Data Fidelity is the highest-value single lens &mdash; it catches arithmetic errors and unsupported assertions that would undermine credibility. Epistemic Humility is most valuable for reports that make trend assertions or causal claims.
+        </div>
+
+        <div class="warning-box">
+            <strong>Important:</strong> Always use a <em>separate</em> chat session for the review. If you run the review in the same conversation that generated the report, the model has already "committed" to its assertions and is less likely to challenge them. Fresh context = honest critique.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- LENS 1: DATA FIDELITY                                         -->
+    <!-- ============================================================ -->
+    <div class="VoCaiDash-section">
+        <h2>Lens 1: Data Fidelity</h2>
+
+        <div class="prompt-card prompt-card--fidelity">
+            <h3>&#x1F4CA; Data Integrity Auditor</h3>
+            <p class="prompt-mandate">"Every assertion in this report must be traceable to the data shown."</p>
+            <p>This lens acts as a data integrity auditor. It is deliberately adversarial &mdash; it doesn't try to improve tone or style, only to catch errors, unsupported assertions, and misleading presentations of data.</p>
+
+            <div class="check-section">
+                <h4>Arithmetic &amp; Consistency</h4>
+                <ul>
+                    <li>Do percentages add up to ~100% (within rounding)?</li>
+                    <li>Are record counts consistent between stat badges, narrative, pill cards, and chart data?</li>
+                    <li>Does the pareto chart ordering match the narrative emphasis?</li>
+                </ul>
+            </div>
+
+            <div class="check-section">
+                <h4>Statistical Rigor</h4>
+                <ul>
+                    <li>Are small-N findings (n &le; 10) presented with appropriate uncertainty?</li>
+                    <li>Is partial-month normalization producing defensible numbers?</li>
+                    <li>Are severity percentages meaningful given the sample size?</li>
+                </ul>
+            </div>
+
+            <div class="check-section">
+                <h4>Quote Representativeness</h4>
+                <ul>
+                    <li>Are selected quotes representative or cherry-picked to dramatize?</li>
+                    <li>Do quote severity labels match the narrative characterization?</li>
+                    <li>Are there quotes that contradict the narrative interpretation?</li>
+                </ul>
+            </div>
+
+            <div class="check-section">
+                <h4>Trend Claims</h4>
+                <ul>
+                    <li>Does the trend chart actually support trend assertions in the narrative?</li>
+                    <li>With only 2-3 months of data, can any directional assertion be made?</li>
+                    <li>Are normalized partial-month values presented as observed values?</li>
+                </ul>
+            </div>
+
+            <div class="check-section">
+                <h4>Methodology Honesty</h4>
+                <ul>
+                    <li>Does the methodology section accurately describe what was done?</li>
+                    <li>Are keyword heuristic limitations adequately disclosed?</li>
+                    <li>Is self-selection bias acknowledged in the findings?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="prompt-block-wrapper">
+            <span class="copy-label" onclick="copyPrompt(this)">&#x1F4CB; Copy prompt</span>
+            <pre class="prompt-block"><span class="comment"># Adversarial Review — Data Fidelity Lens</span>
+
+You are a <span class="emphasis">data integrity auditor</span> reviewing a VOC report. Your job is to find every place where the report's assertions are not fully supported by the data shown.
+
+You are deliberately adversarial. You are not trying to improve the report's tone or style — you are trying to catch errors, unsupported assertions, and misleading presentations.
+
+<span class="comment">## Your Mandate</span>
+
+> "Every assertion in this report must be traceable to the data shown."
+
+<span class="comment">## What to Check</span>
+
+<span class="emphasis">### Arithmetic & Consistency</span>
+- Do percentages add up to ~100% (within rounding)?
+- Are record counts consistent between the stat badges, the narrative, the pill cards, and the chart data tables?
+- Does the pareto chart ordering match the narrative emphasis? If the narrative leads with category #3, why?
+
+<span class="emphasis">### Statistical Rigor</span>
+- Are small-N findings (n ≤ 10) presented with appropriate uncertainty, or stated as confident conclusions?
+- Is partial-month normalization producing defensible numbers? (e.g., scaling 2 records over 5 days to "12 per month" is technically valid but misleading)
+- Are severity percentages meaningful given the sample size? (e.g., "31% critical" from 52 records = 16 records — is that a pattern or noise?)
+
+<span class="emphasis">### Quote Representativeness</span>
+- Are the selected quotes representative of the sub-category, or cherry-picked to dramatize?
+- Do quote severity labels match the narrative's characterization of the sub-category?
+- Are there quotes that actually contradict the narrative interpretation?
+
+<span class="emphasis">### Trend Claims</span>
+- Does the monthly trend chart actually support any trend assertions in the narrative?
+- With only 2-3 months of data, can any directional assertion be made?
+- Are normalized partial-month values presented as if they were observed values?
+
+<span class="emphasis">### Methodology Honesty</span>
+- Does the methodology section accurately describe what was done?
+- Are the keyword heuristic limitations adequately disclosed?
+- Is the self-selection bias of feedback data acknowledged in the findings (not just methodology)?
+
+<span class="comment">## Output Format</span>
+
+Return your review as a structured list:
+
+### ERRORS (assertions that are factually wrong given the data)
+- [E1] Description of error, with specific reference to where in the report
+
+### UNSUPPORTED (assertions that may be true but aren't proven by the data shown)
+- [U1] The assertion, why it's unsupported, what evidence would be needed
+
+### MISLEADING (technically correct but likely to be misread)
+- [M1] What's stated, how it's likely to be misread, suggested fix
+
+### PASSES (things the report gets right — be specific)
+- [P1] What's done well from a data integrity perspective
+
+Be specific. Cite section names, numbers, and quotes from the report. Do not offer general advice — flag concrete instances.
+
+---
+
+<span class="comment">## Report to Review</span>
+
+<span class="placeholder">[PASTE YOUR REPORT CONTENT BELOW — include the narrative, data tables, severity breakdown, and selected quotes]</span></pre>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- LENS 2: EPISTEMIC HUMILITY                                    -->
+    <!-- ============================================================ -->
+    <div class="VoCaiDash-section">
+        <h2>Lens 2: Epistemic Humility</h2>
+
+        <div class="prompt-card prompt-card--epistemic">
+            <h3>&#x1F9E0; Epistemologist &amp; Hallucination Detector</h3>
+            <p class="prompt-mandate">"What does this report claim to know that the data cannot actually tell us?"</p>
+            <p>This lens assumes the report author (an LLM) has a tendency toward overstatement, inferring causation from correlation, and presenting interpretations as facts. It catches the subtle ways AI-generated narratives overreach.</p>
+
+            <div class="check-section">
+                <h4>Causation vs. Correlation</h4>
+                <ul>
+                    <li>Does the narrative say X is "driving" Y, "causing" Z, or "resulting in" W?</li>
+                    <li>These are causal claims. The data only shows co-occurrence in feedback text.</li>
+                    <li>Example: "Password complexity rules generate friction" &mdash; the data shows members <em>complain</em>. It doesn't prove causation.</li>
+                </ul>
+            </div>
+
+            <div class="check-section">
+                <h4>Implied Demographics / Architecture</h4>
+                <ul>
+                    <li>Does the report infer member demographics (age, tech savvy) without demographic data?</li>
+                    <li>Does it assert system architecture ("SSO failures from portals") from symptoms only?</li>
+                    <li>Does it assume member intent beyond what's explicitly stated?</li>
+                </ul>
+            </div>
+
+            <div class="check-section">
+                <h4>Self-Selection Bias Leakage</h4>
+                <ul>
+                    <li>Feedback is from members frustrated enough to submit it &mdash; not the full population.</li>
+                    <li>Volume <em>patterns</em> are meaningful (which issues are more common). Absolute rates are <em>not</em>.</li>
+                    <li>Does the narrative treat complaint volume as if it represents all members?</li>
+                </ul>
+            </div>
+
+            <div class="check-section">
+                <h4>Smuggled Assumptions</h4>
+                <ul>
+                    <li>Are "Research Questions" genuinely open, or do they contain embedded assumptions?</li>
+                    <li>"Are failures concentrated among >65 cohort?" &mdash; assumes a concentration exists.</li>
+                </ul>
+            </div>
+
+            <div class="check-section">
+                <h4>Confidence Calibration</h4>
+                <ul>
+                    <li>Are hedging words ("suggests," "may") used where appropriate?</li>
+                    <li>Are definitive statements reserved for things the data actually proves?</li>
+                    <li>Would a fresh analyst reading ONLY the raw data reach the same conclusions?</li>
+                </ul>
+            </div>
+
+            <div class="check-section">
+                <h4>Hallucination Patterns</h4>
+                <ul>
+                    <li>Are there assertions that don't appear in any quote evidence?</li>
+                    <li>Does the narrative reference patterns, features, or systems not in the data?</li>
+                    <li>Are there plausible-sounding "facts" that aren't actually in the data tables?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="prompt-block-wrapper">
+            <span class="copy-label" onclick="copyPrompt(this)">&#x1F4CB; Copy prompt</span>
+            <pre class="prompt-block"><span class="comment"># Adversarial Review — Epistemic Humility Lens</span>
+
+You are an <span class="emphasis">epistemologist and hallucination detector</span> reviewing a VOC report. Your job is to find every place where the report claims to know something the data cannot actually tell us.
+
+You are deliberately adversarial. You assume the report author (an LLM) has a tendency to overstatement, infer causation from correlation, and present interpretations as facts. Your job is to catch these.
+
+<span class="comment">## Your Mandate</span>
+
+> "What does this report claim to know that the data cannot actually tell us?"
+
+<span class="comment">## What to Check</span>
+
+<span class="emphasis">### Causation vs. Correlation</span>
+- Does the narrative say X is "driving" Y, "causing" Z, or "resulting in" W? These are causal claims. The data only shows co-occurrence in feedback text.
+- Example: "Password complexity rules generate consistent friction" — the data shows members *complain* about passwords. It does not prove the complexity rules are the cause (could be UX, could be browser issues, could be member error).
+
+<span class="emphasis">### Implied Demographics / Architecture</span>
+- Does the report infer member demographics (age, tech savvy, tenure) from complaint text without demographic data?
+- Does it make assertions about system architecture ("SSO failures from insurer portals") based only on member-reported symptoms?
+- Does it assume member intent beyond what's explicitly stated?
+
+<span class="emphasis">### Self-Selection Bias Leakage</span>
+- This feedback is self-selected: members who are frustrated enough to click a feedback tab. The population skews toward extreme friction.
+- Volume patterns and distribution *are* meaningful (which issues are more common than others).
+- Absolute rates and sentiment percentages are *not* meaningful baselines.
+- Does the narrative treat complaint volume as if it represents the full member population?
+
+<span class="emphasis">### Research Questions as Smuggled Assumptions</span>
+- Are "Research Questions" genuinely open, or do they contain embedded assumptions?
+- Example: "Are registration failures concentrated among the >65 cohort?" assumes there IS a concentration — a neutral question would be "Is there a demographic pattern in registration failures?"
+
+<span class="emphasis">### Confidence Calibration</span>
+- Are hedging words ("suggests," "may," "appears to") used where appropriate?
+- Are definitive statements ("is the leading cause," "drives," "confirms") reserved for things the data actually proves?
+- Would a fresh analyst reading ONLY the raw feedback data reach the same conclusions, or has the narrative added interpretive layers?
+
+<span class="emphasis">### Hallucination Patterns</span>
+- Are there specific assertions that don't appear in any of the quote evidence?
+- Does the narrative reference patterns, features, or systems not mentioned in the data?
+- Are there "facts" that seem plausible but aren't actually in the report's own data tables?
+
+<span class="comment">## Output Format</span>
+
+Return your review as a structured list:
+
+### OVERSTATEMENTS (stated as fact, but actually interpretation)
+- [O1] The assertion, why it's an overstatement, what the data actually supports
+
+### INFERENCES (could be true but aren't in the data)
+- [I1] What's inferred, what evidence would be needed to confirm
+
+### BIAS LEAKS (treating self-selected data as population-level)
+- [B1] The statement, why it overgeneralizes
+
+### HALLUCINATION RISK (assertions with no traceable data source)
+- [H1] The assertion, why it might be fabricated
+
+### WELL-CALIBRATED (appropriately hedged or genuinely data-supported)
+- [W1] What's done well from an epistemic perspective
+
+Be specific. Cite exact phrases from the narrative. Do not offer general advice — flag concrete instances.
+
+---
+
+<span class="comment">## Report to Review</span>
+
+<span class="placeholder">[PASTE YOUR REPORT CONTENT BELOW — include the narrative, data tables, severity breakdown, and selected quotes. Note: this data is from a self-selected feedback mechanism.]</span></pre>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- LENS 3: ACTIONABILITY                                         -->
+    <!-- ============================================================ -->
+    <div class="VoCaiDash-section">
+        <h2>Lens 3: Actionability</h2>
+
+        <div class="prompt-card prompt-card--actionability">
+            <h3>&#x1F3AF; Product Manager Reviewer</h3>
+            <p class="prompt-mandate">"If a PM read only this report, could they file a ticket and prioritize it tomorrow?"</p>
+            <p>This lens acts as a demanding PM who just received the report and needs to decide what to do with it. It doesn't want descriptions of problems &mdash; it wants findings specific enough to file tickets, prioritize work, and defend decisions to leadership.</p>
+
+            <div class="check-section">
+                <h4>Specificity of Recommendations</h4>
+                <ul>
+                    <li>Does the report propose specific fixes, or just restate symptoms?</li>
+                    <li>Can you derive a ticket title + acceptance criteria from each finding?</li>
+                    <li>"Fix the login flow" = useless. "Add inline validation showing which password requirements aren't met" = actionable.</li>
+                </ul>
+            </div>
+
+            <div class="check-section">
+                <h4>Ownership Clarity</h4>
+                <ul>
+                    <li>Is it clear WHO owns each problem? Which team's backlog does this go in?</li>
+                    <li>Are there findings that cross entity boundaries without acknowledgment?</li>
+                </ul>
+            </div>
+
+            <div class="check-section">
+                <h4>Severity Proportionality</h4>
+                <ul>
+                    <li>Are Critical Blockers given proportional weight, or buried below higher-volume minor issues?</li>
+                    <li>Is there a "silent killer" &mdash; low-volume but 100% critical rate?</li>
+                </ul>
+            </div>
+
+            <div class="check-section">
+                <h4>Quick Fix vs. Systemic</h4>
+                <ul>
+                    <li>Does the report distinguish patch-this-sprint from architectural changes?</li>
+                    <li>Is there enough detail to estimate effort?</li>
+                    <li>Are obvious quick wins called out?</li>
+                </ul>
+            </div>
+
+            <div class="check-section">
+                <h4>What's Missing Entirely</h4>
+                <ul>
+                    <li>Impact of issues? (calls generated, churn risk, compliance)</li>
+                    <li>Trend? (getting better or worse?)</li>
+                    <li>Member expectations vs. reality?</li>
+                    <li>If you only had budget for ONE fix, is the report clear enough to answer which one?</li>
+                </ul>
+            </div>
+
+            <div class="check-section">
+                <h4>Missed Patterns</h4>
+                <ul>
+                    <li>Are there patterns in quotes the sub-categorization missed?</li>
+                    <li>Are distinct problems lumped together, or one issue split too finely?</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="prompt-block-wrapper">
+            <span class="copy-label" onclick="copyPrompt(this)">&#x1F4CB; Copy prompt</span>
+            <pre class="prompt-block"><span class="comment"># Adversarial Review — Actionability & Completeness Lens</span>
+
+You are a <span class="emphasis">product manager</span> who just received this VOC report and needs to decide what to do with it. Your job is to find every place where the report fails to give you what you need to act.
+
+You are deliberately demanding. You don't want a report that describes problems — you want one that helps you file tickets, prioritize work, and defend decisions to leadership.
+
+<span class="comment">## Your Mandate</span>
+
+> "If a PM read only this report, could they file a ticket and prioritize it tomorrow?"
+
+<span class="comment">## What to Check</span>
+
+<span class="emphasis">### Specificity of Recommendations</span>
+- Does the report propose specific fixes, or just restate symptoms? ("Fix the login flow" is useless. "Add inline validation on the password field showing which requirements aren't met" is actionable.)
+- Can you derive a ticket title + acceptance criteria from each finding?
+- Are recommendations tied to specific sub-categories, or generic?
+
+<span class="emphasis">### Ownership Clarity</span>
+- Is it clear WHO owns each problem? Specialty pharmacy ops? Platform engineering? The PBM? The insurer (for SSO)?
+- Are there findings that cross entity boundaries without acknowledging it?
+- Would a PM know which team's backlog to put this in?
+
+<span class="emphasis">### Severity Proportionality</span>
+- Are Critical Blockers given proportional weight in the narrative, or are they buried below higher-volume minor issues?
+- The report sorts by volume (highest first). Should some sub-categories be elevated despite lower volume because of severity?
+- Is there a "silent killer" — a low-volume sub-category with 100% critical rate that deserves attention?
+
+<span class="emphasis">### Quick Fix vs. Systemic</span>
+- Does the report distinguish between things that could be patched this sprint vs. things requiring architectural changes?
+- Is there enough detail to estimate effort level?
+- Are there obvious quick wins the report doesn't call out?
+
+<span class="emphasis">### Missing Sub-categories or Patterns</span>
+- Looking at the quotes, are there patterns the sub-category rules MISSED?
+- Are there quotes in the "General / Other" catch-all that should have their own category?
+- Is the sub-categorization scheme too fine (splitting what's really one issue) or too coarse (lumping distinct problems)?
+
+<span class="emphasis">### What's Missing Entirely</span>
+- Does the report tell you the IMPACT of these issues? (calls generated, churn risk, compliance exposure)
+- Does it tell you the TREND? (getting better or worse?)
+- Does it tell you WHAT MEMBERS EXPECTED vs. what they got?
+- Are there obvious adjacent questions the report should have addressed but didn't?
+
+<span class="emphasis">### Signal vs. Noise</span>
+- With small sample sizes, which findings are signal and which are noise?
+- If you only had budget for ONE fix based on this report, which would it be? Is the report clear enough to answer that?
+
+<span class="comment">## Output Format</span>
+
+Return your review as a structured list:
+
+### NOT ACTIONABLE (findings that can't be acted on as stated)
+- [N1] The finding, what's missing, what would make it actionable
+
+### MISSING CONTEXT (information a PM needs that isn't in the report)
+- [C1] What's missing, why it matters for prioritization
+
+### SEVERITY MISMATCH (where report emphasis doesn't match impact)
+- [S1] What's over/under-emphasized, what the right calibration would be
+
+### MISSED PATTERNS (things visible in the data but not called out)
+- [X1] The pattern, which quotes/data show it, suggested sub-category or finding
+
+### READY TO ACT (findings specific enough to drive work)
+- [R1] What's actionable and well-presented
+
+Be specific. Reference sub-category names, quote text, and data points. Do not offer general advice — flag concrete gaps.
+
+---
+
+<span class="comment">## Report to Review</span>
+
+<span class="placeholder">[PASTE YOUR REPORT CONTENT BELOW — include the narrative, data tables, severity breakdown, and selected quotes]</span></pre>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SYNTHESIS PROMPT                                               -->
+    <!-- ============================================================ -->
+    <div class="VoCaiDash-section">
+        <h2>Bonus: Synthesis Prompt</h2>
+        <p>After running all three lenses, use this prompt to produce a <strong>revised narrative</strong> that resolves tensions between the reviewers. This is the final editor that integrates the feedback.</p>
+
+        <div class="prompt-card prompt-card--synthesis">
+            <h3>&#x1F4DD; Final Editor &amp; Integrator</h3>
+            <p class="prompt-mandate">Resolve tensions between the three reviewers. Conservative wins ties.</p>
+
+            <div class="resolution-rules">
+                <div class="resolution-rule rule--pass">
+                    <strong>&#x2705; Survives all 3 lenses</strong>
+                    Keep as-is or strengthen the finding
+                </div>
+                <div class="resolution-rule rule--hedge">
+                    <strong>&#x26A0; Fails 1 lens</strong>
+                    Hedge — add qualifier, uncertainty note, or narrower assertion
+                </div>
+                <div class="resolution-rule rule--cut">
+                    <strong>&#x274C; Fails 2+ lenses</strong>
+                    Cut entirely or replace with what the data actually supports
+                </div>
+            </div>
+
+            <div class="check-section">
+                <h4>Additional Constraints</h4>
+                <ul>
+                    <li>Every number must be traceable to the data tables</li>
+                    <li>Use hedging language ("suggests," "appears") for interpretive claims</li>
+                    <li>Use definitive language ("accounts for," "shows") only for arithmetic facts</li>
+                    <li>Do NOT invent new findings &mdash; only revise or cut</li>
+                    <li>When reviewers disagree, side with the more conservative position</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="prompt-block-wrapper">
+            <span class="copy-label" onclick="copyPrompt(this)">&#x1F4CB; Copy prompt</span>
+            <pre class="prompt-block"><span class="comment"># Synthesis — Adversarial Review Integration</span>
+
+You are the <span class="emphasis">final editor</span> of a VOC report. You have the original report AND feedback from three adversarial reviewers:
+
+1. **Data Fidelity** — checked arithmetic, statistical rigor, quote representativeness
+2. **Epistemic Humility** — checked for overclaims, causation/correlation confusion, hallucination risk
+3. **Actionability** — checked whether findings are specific enough for a PM to act on
+
+Your job: produce a <span class="emphasis">revised Key Findings section</span> that resolves the tensions.
+
+<span class="comment">## Resolution Rules</span>
+
+| Scenario | Action |
+|----------|--------|
+| Finding survives all 3 lenses | Keep as-is or strengthen |
+| Finding fails 1 lens | Hedge — add qualifier, uncertainty note, narrower assertion |
+| Finding fails 2+ lenses | Cut or replace with what the data actually supports |
+| Reviewer flags something MISSING | Add if data supports it |
+| Reviewers disagree | Side with the more conservative position |
+
+<span class="comment">## Constraints</span>
+
+- Every number must be traceable to the data tables provided
+- Use hedging language ("suggests," "appears," "may") for interpretive assertions
+- Use definitive language ("accounts for," "shows," "represents") only for arithmetic facts
+- Do NOT add findings that aren't in the data — you can only revise or cut, not invent
+- Banned words: task force, stakeholder, alignment, synergy, leverage, optimize, enhance, initiative, strategic
+
+<span class="comment">## Inputs</span>
+
+### Original Key Findings
+
+<span class="placeholder">[PASTE THE ORIGINAL REPORT FINDINGS]</span>
+
+### Data Fidelity Review
+
+<span class="placeholder">[PASTE THE DATA FIDELITY REVIEW OUTPUT]</span>
+
+### Epistemic Humility Review
+
+<span class="placeholder">[PASTE THE EPISTEMIC HUMILITY REVIEW OUTPUT]</span>
+
+### Actionability Review
+
+<span class="placeholder">[PASTE THE ACTIONABILITY REVIEW OUTPUT]</span>
+
+### Raw Data Context (for fact-checking)
+
+<span class="placeholder">[PASTE DATA TABLES — sub-categories, severity breakdown, sample size]</span>
+
+<span class="comment">## Output</span>
+
+Return the revised findings (3-5 bullet points), then on a new line:
+
+CHANGELOG:
+- [Change description] (driven by: [Data Fidelity|Epistemic Humility|Actionability])</pre>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- WHEN TO USE WHICH                                             -->
+    <!-- ============================================================ -->
+    <div class="VoCaiDash-section">
+        <h2>When to Use Which Lens</h2>
+
+        <table class="output-format">
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Best Lens</th>
+                    <th>Why</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Quick sanity-check before sending a report</td>
+                    <td><strong>Data Fidelity</strong></td>
+                    <td>Catches the errors most likely to undermine credibility with stakeholders</td>
+                </tr>
+                <tr>
+                    <td>Report makes trend assertions or causal claims</td>
+                    <td><strong>Epistemic Humility</strong></td>
+                    <td>Catches overstatements that sound authoritative but aren't supported</td>
+                </tr>
+                <tr>
+                    <td>Report is going to PMs who need to prioritize work</td>
+                    <td><strong>Actionability</strong></td>
+                    <td>Catches findings that are interesting but not specific enough to drive tickets</td>
+                </tr>
+                <tr>
+                    <td>High-stakes deliverable (leadership, external)</td>
+                    <td><strong>All 3 + Synthesis</strong></td>
+                    <td>Maximum rigor; ensures findings survive multiple adversarial perspectives</td>
+                </tr>
+                <tr>
+                    <td>Small sample size (&lt;50 records)</td>
+                    <td><strong>Data Fidelity + Epistemic Humility</strong></td>
+                    <td>Small-N reports are most prone to overstatement and statistical noise</td>
+                </tr>
+                <tr>
+                    <td>First report in a new topic area</td>
+                    <td><strong>Actionability + Epistemic Humility</strong></td>
+                    <td>Without historical context, claims are less grounded; ensure they're still useful</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PRACTICAL TIPS                                                 -->
+    <!-- ============================================================ -->
+    <div class="VoCaiDash-section">
+        <h2>Practical Tips for Manual Use</h2>
+
+        <div class="tip-box">
+            <strong>Context window:</strong> These prompts work best when you include the full report content (narrative + data tables + quotes). If your report is too long for the context window, prioritize including: (1) the narrative/findings section, (2) the data tables, (3) a representative sample of quotes.
+        </div>
+
+        <div class="tip-box">
+            <strong>Model choice:</strong> These prompts work with any capable LLM (GPT-4o, Claude, etc.) through Copilot. The adversarial framing produces better results with larger models that can hold multiple perspectives simultaneously.
+        </div>
+
+        <div class="tip-box">
+            <strong>Iteration:</strong> If a review flags many issues, fix the most critical ones and run the same lens again. The second pass often catches subtler issues that were masked by the obvious ones.
+        </div>
+
+        <div class="tip-box">
+            <strong>Partial runs:</strong> Even running just ONE lens catches 60-70% of the issues the full 3-lens review would find. Data Fidelity alone is better than no review at all.
+        </div>
+
+        <div class="warning-box">
+            <strong>Anti-pattern:</strong> Don't ask the same model that generated the report to "review its own work" in the same conversation. The model will rationalize its choices rather than challenging them. Always start a fresh chat for the review step.
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER                                                        -->
+    <!-- ============================================================ -->
+    <div class="VoCaiDash-footer">
+        <p>Adversarial Review Prompts &mdash; sanitized portfolio copy &mdash; usable with any capable LLM chat tool</p>
+    </div>
+
+</div><!-- /VoCaiDash-page -->
+
+<script>
+    function copyPrompt(labelEl) {
+        const wrapper = labelEl.closest('.prompt-block-wrapper');
+        const block = wrapper.querySelector('.prompt-block');
+        const text = block.innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            const original = labelEl.innerHTML;
+            labelEl.innerHTML = '&#x2705; Copied!';
+            setTimeout(() => { labelEl.innerHTML = original; }, 2000);
+        });
+    }
+</script>
+</body>
+</html>
