@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOC Report Pipeline — How It Works</title>
+    <style>
+        /* ================================================================
+           VOC Pipeline Workflow — sanitized portfolio copy
+           Component styles inspired by a corporate design system.
+           ================================================================ */
+        :root {
+            --primary: #0033FF;
+            --primary-dark: #110081;
+            --primary-surface: #E6EBFF;
+            --neutral-bg: #F4F4F4;
+            --neutral-text: #333333;
+            --neutral-text-secondary: #5C5C5C;
+            --neutral-border: #D6D6D6;
+            --background: #FFFFFF;
+            --font-family: "Value Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-family-serif: "Value Serif Pro", Georgia, serif;
+
+            /* Pipeline-specific */
+            --step-color-upstream: #E8DEF8;
+            --step-border-upstream: #7E57C2;
+            --step-color-enrichment: #FFF0E0;
+            --step-border-enrichment: #D14905;
+            --step-color-generate: var(--primary-surface);
+            --step-border-generate: var(--primary);
+            --step-color-review: #FDE8E8;
+            --step-border-review: #8B0000;
+            --step-color-extract: #E0F2E9;
+            --step-border-extract: #00874D;
+            --step-color-reconcile: #FFF8E1;
+            --step-border-reconcile: #E9B44C;
+            --step-color-output: #E6EBFF;
+            --step-border-output: var(--primary-dark);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--neutral-text);
+            background: var(--neutral-bg);
+            line-height: 1.55;
+            margin: 0;
+            padding: 0;
+        }
+
+        .VoCaiDash-page {
+            max-width: 1060px;
+            margin: 0 auto;
+            padding: 24px 20px 48px;
+            background: var(--background);
+            min-height: 100vh;
+        }
+
+        header {
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 16px;
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-family: var(--font-family-serif);
+            color: var(--primary-dark);
+            font-size: 1.75rem;
+            margin: 0 0 8px;
+        }
+
+        h2 {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            margin: 0 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--primary-surface);
+        }
+
+        h3 {
+            font-size: 1rem;
+            color: var(--neutral-text);
+            margin: 0 0 8px;
+        }
+
+        .VoCaiDash-subtitle {
+            color: var(--neutral-text-secondary);
+            font-size: 0.88rem;
+            margin: 4px 0 0;
+        }
+
+        .VoCaiDash-section {
+            margin: 36px 0;
+        }
+
+        .VoCaiDash-note {
+            font-size: 0.78rem;
+            color: var(--neutral-text-secondary);
+            font-style: italic;
+            margin: 8px 0;
+        }
+
+        /* ================================================================
+           Summary stats bar
+           ================================================================ */
+        .VoCaiDash-summary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 12px 0;
+        }
+
+        .VoCaiDash-stat {
+            background: var(--primary-surface);
+            border-radius: 8px;
+            padding: 12px 18px;
+            text-align: center;
+            min-width: 120px;
+            flex: 1;
+        }
+
+        .VoCaiDash-stat-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+        }
+
+        .VoCaiDash-stat-label {
+            font-size: 0.78rem;
+            color: var(--neutral-text-secondary);
+            display: block;
+        }
+
+        /* ================================================================
+           Pipeline flow — vertical step cards
+           ================================================================ */
+        .pipeline-flow {
+            position: relative;
+            padding-left: 48px;
+        }
+
+        /* Vertical connector line */
+        .pipeline-flow::before {
+            content: '';
+            position: absolute;
+            left: 23px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--neutral-border);
+        }
+
+        .pipeline-step {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .pipeline-step:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Step number circle */
+        .pipeline-step-marker {
+            position: absolute;
+            left: -48px;
+            top: 16px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: white;
+            z-index: 2;
+        }
+
+        .pipeline-step-card {
+            border-radius: 12px;
+            padding: 20px 24px;
+            border-left: 4px solid;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+
+        .pipeline-step-card h3 {
+            margin: 0 0 8px;
+            font-size: 1.05rem;
+        }
+
+        .pipeline-step-card p {
+            margin: 0 0 8px;
+            color: var(--neutral-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .pipeline-step-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-label {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 3px 10px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+
+        /* Step color themes */
+        .step--upstream .pipeline-step-marker { background: #7E57C2; }
+        .step--upstream .pipeline-step-card { background: var(--step-color-upstream); border-left-color: var(--step-border-upstream); }
+        .step--upstream .step-label { background: #7E57C2; color: white; }
+
+        .step--enrichment .pipeline-step-marker { background: #D14905; }
+        .step--enrichment .pipeline-step-card { background: var(--step-color-enrichment); border-left-color: var(--step-border-enrichment); }
+        .step--enrichment .step-label { background: #D14905; color: white; }
+
+        .step--generate .pipeline-step-marker { background: var(--primary); }
+        .step--generate .pipeline-step-card { background: var(--step-color-generate); border-left-color: var(--step-border-generate); }
+        .step--generate .step-label { background: var(--primary); color: white; }
+
+        .step--review .pipeline-step-marker { background: #8B0000; }
+        .step--review .pipeline-step-card { background: var(--step-color-review); border-left-color: var(--step-border-review); }
+        .step--review .step-label { background: #8B0000; color: white; }
+
+        .step--extract .pipeline-step-marker { background: #00874D; }
+        .step--extract .pipeline-step-card { background: var(--step-color-extract); border-left-color: var(--step-border-extract); }
+        .step--extract .step-label { background: #00874D; color: white; }
+
+        .step--reconcile .pipeline-step-marker { background: #B8860B; }
+        .step--reconcile .pipeline-step-card { background: var(--step-color-reconcile); border-left-color: var(--step-border-reconcile); }
+        .step--reconcile .step-label { background: #B8860B; color: white; }
+
+        .step--output .pipeline-step-marker { background: var(--primary-dark); }
+        .step--output .pipeline-step-card { background: var(--step-color-output); border-left-color: var(--step-border-output); }
+        .step--output .step-label { background: var(--primary-dark); color: white; }
+
+        /* ================================================================
+           Connector arrow between major sections
+           ================================================================ */
+        .pipeline-connector {
+            text-align: center;
+            padding: 16px 0;
+            color: var(--neutral-text-secondary);
+            font-size: 1.5rem;
+        }
+
+        /* ================================================================
+           Intro callout boxes
+           ================================================================ */
+        .callout-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 16px 0;
+        }
+
+        @media (max-width: 768px) {
+            .callout-grid { grid-template-columns: 1fr; }
+        }
+
+        .callout-box {
+            border-radius: 12px;
+            padding: 20px 24px;
+            border: 1px solid var(--neutral-border);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+
+        .callout-box h3 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 0 10px;
+        }
+
+        .callout-box h3 .callout-icon {
+            font-size: 1.3rem;
+        }
+
+        .callout-box p {
+            margin: 0 0 8px;
+            font-size: 0.9rem;
+            color: var(--neutral-text-secondary);
+        }
+
+        .callout-box ul {
+            margin: 8px 0 0;
+            padding-left: 18px;
+            font-size: 0.88rem;
+            color: var(--neutral-text-secondary);
+        }
+
+        .callout-box ul li {
+            margin-bottom: 4px;
+        }
+
+        .callout-box--purple {
+            background: #F3EEFA;
+            border-color: #D1C4E9;
+        }
+
+        .callout-box--orange {
+            background: #FFF5ED;
+            border-color: #FFD6B0;
+        }
+
+        /* ================================================================
+           Review lenses (3-column)
+           ================================================================ */
+        .review-lenses {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin: 12px 0;
+        }
+
+        @media (max-width: 768px) {
+            .review-lenses { grid-template-columns: 1fr; }
+        }
+
+        .review-lens {
+            background: var(--background);
+            border: 1px solid var(--neutral-border);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .review-lens-icon {
+            font-size: 1.5rem;
+            margin-bottom: 6px;
+        }
+
+        .review-lens h4 {
+            margin: 0 0 6px;
+            font-size: 0.92rem;
+            color: var(--neutral-text);
+        }
+
+        .review-lens p {
+            margin: 0;
+            font-size: 0.82rem;
+            color: var(--neutral-text-secondary);
+        }
+
+        /* ================================================================
+           Resolution rules mini-table
+           ================================================================ */
+        .resolution-rules {
+            display: flex;
+            gap: 12px;
+            margin: 12px 0;
+            flex-wrap: wrap;
+        }
+
+        .resolution-rule {
+            flex: 1;
+            min-width: 180px;
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 0.82rem;
+            border: 1px solid var(--neutral-border);
+        }
+
+        .resolution-rule strong {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .rule--pass { background: #E0F2E9; }
+        .rule--pass strong { color: #00874D; }
+        .rule--hedge { background: #FFF8E1; }
+        .rule--hedge strong { color: #B8860B; }
+        .rule--cut { background: #FDE8E8; }
+        .rule--cut strong { color: #8B0000; }
+
+        /* ================================================================
+           Reconciliation status tags
+           ================================================================ */
+        .status-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 12px 0;
+        }
+
+        .status-tag {
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .status--consistent { background: #E0F2E9; color: #00874D; }
+        .status--changed { background: #FFF8E1; color: #B8860B; }
+        .status--new { background: var(--primary-surface); color: var(--primary); }
+        .status--removed { background: #FDE8E8; color: #8B0000; }
+
+        /* ================================================================
+           Output cards
+           ================================================================ */
+        .output-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 16px 0;
+        }
+
+        @media (max-width: 768px) {
+            .output-grid { grid-template-columns: 1fr; }
+        }
+
+        .output-card {
+            border-radius: 12px;
+            padding: 16px 20px;
+            border: 1px solid var(--neutral-border);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .output-card h4 {
+            margin: 0 0 6px;
+            font-size: 0.95rem;
+        }
+
+        .output-card p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--neutral-text-secondary);
+        }
+
+        .output-card--stakeholder {
+            background: var(--primary-surface);
+            border-color: var(--primary);
+        }
+        .output-card--stakeholder h4 { color: var(--primary-dark); }
+
+        .output-card--internal {
+            background: #F9F9F9;
+        }
+        .output-card--internal h4 { color: var(--neutral-text); }
+
+        /* ================================================================
+           Footer
+           ================================================================ */
+        .VoCaiDash-footer {
+            margin-top: 48px;
+            padding-top: 16px;
+            border-top: 1px solid var(--neutral-border);
+            font-size: 0.78rem;
+            color: var(--neutral-text-secondary);
+        }
+
+        @media print {
+            body { background: white; }
+            .pipeline-step-card { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+<div class="VoCaiDash-page">
+
+    <header>
+        <h1>VOC Report Pipeline</h1>
+        <p class="VoCaiDash-subtitle">
+            How we generate more consistent, more trustworthy Voice of Customer reports &mdash; from raw feedback to stakeholder delivery
+        </p>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- OVERVIEW STATS                                                -->
+    <!-- ============================================================ -->
+    <div class="VoCaiDash-section">
+        <h2>Pipeline at a Glance</h2>
+        <div class="VoCaiDash-summary">
+            <div class="VoCaiDash-stat">
+                <span class="VoCaiDash-stat-value">7</span>
+                <span class="VoCaiDash-stat-label">Pipeline Steps</span>
+            </div>
+            <div class="VoCaiDash-stat">
+                <span class="VoCaiDash-stat-value">3</span>
+                <span class="VoCaiDash-stat-label">Quality Lenses</span>
+            </div>
+            <div class="VoCaiDash-stat">
+                <span class="VoCaiDash-stat-value">8</span>
+                <span class="VoCaiDash-stat-label">AI Review Passes</span>
+            </div>
+            <div class="VoCaiDash-stat">
+                <span class="VoCaiDash-stat-value">4</span>
+                <span class="VoCaiDash-stat-label">Reconciliation Statuses</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- WHY THIS PIPELINE                                             -->
+    <!-- ============================================================ -->
+    <div class="VoCaiDash-section">
+        <h2>The Problem We're Solving</h2>
+        <p>LLM-generated reports drift over time. The same data can produce different narratives each run. If we feed a previous report into context, the model copy-pastes hallucinations. If we don't, we lose continuity and can't track trends.</p>
+        <p style="margin-top:8px;">Our approach: <strong>generate fresh (with no memory), adversarially review for accuracy, then reconcile against previous findings.</strong> This helps break the copy-paste loop while preserving temporal tracking and reducing the chance that hallucinations become "facts."</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- UPSTREAM INPUTS + ENRICHMENT MODEL                            -->
+    <!-- ============================================================ -->
+    <div class="VoCaiDash-section">
+        <h2>Before the Pipeline Runs</h2>
+        <div class="callout-grid">
+            <div class="callout-box callout-box--purple">
+                <h3><span class="callout-icon">&#x1F6E1;</span> Upstream Model Monitoring</h3>
+                <p>Before any report is generated, we continuously monitor the enrichment model for behavioral drift:</p>
+                <ul>
+                    <li><strong>Reasoning token usage</strong> &mdash; Has the model started using more or fewer reasoning tokens than expected? Sudden shifts indicate prompt sensitivity or capability changes.</li>
+                    <li><strong>Classification stability</strong> &mdash; Are theme/severity distributions shifting without corresponding data changes?</li>
+                    <li><strong>Latency &amp; error rates</strong> &mdash; Operational health checks ensure the model is responding within expected bounds.</li>
+                    <li><strong>Drift alerts</strong> &mdash; Automated flags trigger when any metric deviates beyond thresholds, pausing pipeline execution until reviewed.</li>
+                </ul>
+            </div>
+            <div class="callout-box callout-box--orange">
+                <h3><span class="callout-icon">&#x2699;</span> Enrichment Model</h3>
+                <p>Raw member feedback is enriched before it reaches the report pipeline. The enrichment model handles:</p>
+                <ul>
+                    <li><strong>Theme classification</strong> &mdash; Each piece of feedback is tagged with one or more themes from the Journey Framework taxonomy.</li>
+                    <li><strong>Severity scoring</strong> &mdash; Feedback is classified by impact: Critical Blocker, Major Inconvenience, Minor Inconvenience, Suggestion, or No Action.</li>
+                    <li><strong>Sentiment analysis</strong> &mdash; Positive, neutral, or negative tone detection provides emotional context.</li>
+                    <li><strong>Quote extraction</strong> &mdash; Verbatim quotes are identified and preserved for evidence traceability.</li>
+                </ul>
+            </div>
+        </div>
+        <p class="VoCaiDash-note">These upstream checks ensure the data entering the pipeline is high-quality and the model behavior is stable before we generate any stakeholder-facing reports.</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PIPELINE STEPS                                                -->
+    <!-- ============================================================ -->
+    <div class="VoCaiDash-section">
+        <h2>Pipeline Steps</h2>
+
+        <div class="pipeline-flow">
+
+            <!-- Step 1: Fresh Generation -->
+            <div class="pipeline-step step--generate">
+                <div class="pipeline-step-marker">1</div>
+                <div class="pipeline-step-card">
+                    <span class="step-label">Pass 1</span>
+                    <h3>Generate a Fresh Report</h3>
+                    <p>The model analyzes the current period's member feedback with <strong>zero memory of previous reports.</strong> It produces findings, recommendations, and impact assessments based purely on what the data shows right now.</p>
+                    <p>This deliberate "amnesia" prevents the model from perpetuating earlier mistakes or carrying forward stale conclusions. Every report starts from a clean slate.</p>
+                </div>
+            </div>
+
+            <!-- Step 2: Adversarial Review -->
+            <div class="pipeline-step step--review">
+                <div class="pipeline-step-marker">2</div>
+                <div class="pipeline-step-card">
+                    <span class="step-label">Pass 2</span>
+                    <h3>Adversarial Quality Review</h3>
+                    <p>Before anything reaches stakeholders, the fresh report is scrutinized through <strong>three independent review lenses</strong> running in parallel:</p>
+
+                    <div class="review-lenses">
+                        <div class="review-lens">
+                            <div class="review-lens-icon">&#x1F4CA;</div>
+                            <h4>Data Fidelity</h4>
+                            <p>Are the numbers right? Can every quote be traced to source data? Are trend assertions supported?</p>
+                        </div>
+                        <div class="review-lens">
+                            <div class="review-lens-icon">&#x1F9E0;</div>
+                            <h4>Epistemic Humility</h4>
+                            <p>Is the model overstating? Confusing correlation with causation? Leaking bias into conclusions?</p>
+                        </div>
+                        <div class="review-lens">
+                            <div class="review-lens-icon">&#x1F3AF;</div>
+                            <h4>Actionability</h4>
+                            <p>Could a PM act on these recommendations? Are owners identified? Is severity proportionate to evidence?</p>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 12px;">The three reviews are synthesized into a single revised set of findings. Conflicts are resolved by these rules:</p>
+
+                    <div class="resolution-rules">
+                        <div class="resolution-rule rule--pass">
+                            <strong>&#x2705; Passes All 3 Lenses</strong>
+                            Keep or strengthen the finding
+                        </div>
+                        <div class="resolution-rule rule--hedge">
+                            <strong>&#x26A0; Fails 1 Lens</strong>
+                            Hedge with qualifiers ("likely," "suggests")
+                        </div>
+                        <div class="resolution-rule rule--cut">
+                            <strong>&#x274C; Fails 2+ Lenses</strong>
+                            Cut entirely or replace with data-supported assertion
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Assertion Extraction -->
+            <div class="pipeline-step step--extract">
+                <div class="pipeline-step-marker">3</div>
+                <div class="pipeline-step-card">
+                    <span class="step-label">Pass 3</span>
+                    <h3>Extract Verified Assertions</h3>
+                    <p>Every factual assertion in the reviewed report is extracted into a structured record &mdash; the specific assertion, its confidence level, its evidence source, and where it maps to the Member Journey Framework.</p>
+                    <p>Because assertions are extracted from the <em>reviewed</em> report (not the raw draft), hallucinated assertions are more likely to be caught and removed <strong>before they enter the temporal record.</strong> This helps protect long-term data integrity.</p>
+                </div>
+            </div>
+
+            <!-- Step 4: Reconciliation -->
+            <div class="pipeline-step step--reconcile">
+                <div class="pipeline-step-marker">4</div>
+                <div class="pipeline-step-card">
+                    <span class="step-label">Pass 4</span>
+                    <h3>Reconcile with Previous Findings</h3>
+                    <p>This period's assertions are compared assertion-by-assertion against the previous period. Each assertion receives a reconciliation status:</p>
+
+                    <div class="status-tags">
+                        <span class="status-tag status--consistent">CONSISTENT &mdash; stable (&lt;5% variance)</span>
+                        <span class="status-tag status--changed">CHANGED &mdash; shifted (&gt;10% variance)</span>
+                        <span class="status-tag status--new">NEW &mdash; first appearance</span>
+                        <span class="status-tag status--removed">REMOVED &mdash; no longer supported</span>
+                    </div>
+
+                    <p>The reconciliation injects temporal context into the final report: "This issue persists from last quarter" or "This is a newly emerging concern." Stakeholders get continuity without copy-paste drift.</p>
+                    <p class="VoCaiDash-note">For the very first report in a series, this step is skipped &mdash; there's nothing to reconcile against yet.</p>
+                </div>
+            </div>
+
+            <!-- Step 5: Change Log -->
+            <div class="pipeline-step step--reconcile">
+                <div class="pipeline-step-marker">5</div>
+                <div class="pipeline-step-card">
+                    <span class="step-label">Pass 5</span>
+                    <h3>Generate Internal Change Log</h3>
+                    <p>A human-readable change log summarizes what shifted between periods: which issues escalated, which were resolved, and where new concerns surfaced. This is an <strong>internal artifact</strong> for the research team to review before the final report goes out.</p>
+                </div>
+            </div>
+
+            <!-- Step 6: Outputs -->
+            <div class="pipeline-step step--output">
+                <div class="pipeline-step-marker">6</div>
+                <div class="pipeline-step-card">
+                    <span class="step-label">Outputs</span>
+                    <h3>Deliver &amp; Archive</h3>
+                    <p>The pipeline produces four artifacts, split between stakeholder delivery and internal audit:</p>
+
+                    <div class="output-grid">
+                        <div class="output-card output-card--stakeholder">
+                            <h4>&#x1F4C4; Final Report</h4>
+                            <p>The stakeholder-facing deliverable with temporal context, verified assertions, and qualified recommendations.</p>
+                        </div>
+                        <div class="output-card output-card--internal">
+                            <h4>&#x1F4CB; Change Log</h4>
+                            <p>Period-over-period summary of what shifted, for internal review before distribution.</p>
+                        </div>
+                        <div class="output-card output-card--internal">
+                            <h4>&#x1F5C4; Assertions Record</h4>
+                            <p>Structured JSON of every verified assertion &mdash; stored for next period's reconciliation step.</p>
+                        </div>
+                        <div class="output-card output-card--internal">
+                            <h4>&#x1F50D; Reconciliation Detail</h4>
+                            <p>assertion-by-assertion comparison for audit trail. Shows exactly what changed and why.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /pipeline-flow -->
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- SAFEGUARDS                                                    -->
+    <!-- ============================================================ -->
+    <div class="VoCaiDash-section">
+        <h2>Built-In Safeguards</h2>
+        <div class="callout-grid">
+            <div class="callout-box" style="background: #F9F9FF; border-color: var(--primary-surface);">
+                <h3><span class="callout-icon">&#x1F6AB;</span> Hallucination Mitigation</h3>
+                <ul>
+                    <li>Fresh generation with no prior report context helps break the copy-paste loop</li>
+                    <li>Three-lens adversarial review is designed to catch fabricated statistics before they become assertions</li>
+                    <li>Assertions extracted only from reviewed output, reducing the risk of unverified assertions persisting</li>
+                </ul>
+            </div>
+            <div class="callout-box" style="background: #F9F9FF; border-color: var(--primary-surface);">
+                <h3><span class="callout-icon">&#x1F4C8;</span> Temporal Integrity</h3>
+                <ul>
+                    <li>Reconciliation uses stable identifiers to track the same issues across reporting periods</li>
+                    <li>Automated warnings flag when nothing appears consistent between periods &mdash; a sign something may have shifted in the data or model</li>
+                    <li>12+ periods of assertion history maintained for longitudinal tracking</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER                                                        -->
+    <!-- ============================================================ -->
+    <div class="VoCaiDash-footer">
+        <p>VOC Report Pipeline Specification &mdash; sanitized portfolio copy &mdash; original developed in an internal research setting</p>
+    </div>
+
+</div><!-- /VoCaiDash-page -->
+</body>
+</html>

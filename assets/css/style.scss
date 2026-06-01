@@ -346,16 +346,31 @@ body {
 
     .meta-item {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 0.5rem;
+      min-width: 0;
+      flex: 1 1 12rem;
 
       .meta-label {
         color: var(--color-text-muted);
+        flex: 0 0 auto;
       }
 
       .meta-value {
         color: var(--color-accent-light);
         font-weight: 500;
+        min-width: 0;
+        overflow-wrap: anywhere;
+      }
+    }
+
+    @media screen and (max-width: 41.99em) {
+      flex-direction: column;
+      gap: 0.75rem;
+
+      .meta-item {
+        flex: 0 1 auto;
+        width: 100%;
       }
     }
   }
