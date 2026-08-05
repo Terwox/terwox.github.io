@@ -15,7 +15,7 @@ For help, email [terwox@gmail.com](mailto:terwox@gmail.com). Include your Chrome
 
 1. Confirm you completed the extension's one-time privacy setup.
 2. Confirm you are signed in to BoardGameGeek.
-3. Reload the BoardGameGeek tab after installing or updating the extension.
+3. Supported discussion tabs refresh automatically after consent or an extension update. If a tab still appears stale, reload it once manually.
 4. Open the extension popup to check whether the live block list synchronized.
 5. If linking is unwanted, open the extension's Options page and turn off **Also block hidden users from subscriptions**.
 
