@@ -5,7 +5,7 @@ description: Privacy policy for the BGG Hard Block Chrome extension by Terwox.
 permalink: /bgg-hard-block/privacy/
 ---
 
-<p class="eyebrow">Effective August 4, 2026</p>
+<p class="eyebrow">Effective August 5, 2026</p>
 
 # Privacy policy
 
@@ -16,7 +16,7 @@ The extension is inactive until the user reviews its in-extension disclosure and
 ## Data handled
 
 - BGG Hidden Users identifiers and the public BGG usernames associated with them
-- forum page content and author attribution markup rendered on BGG forum pages
+- discussion content and author attribution markup rendered on BGG forum threads, GeekLists, images, videos, files, and individual blog posts
 - the current BGG page address, used only for local status reporting
 - the signed-in BGG authorization value, used only in page memory to call BGG's own application programming interface (API)
 - the user's subscription-linking preference and local status counts
@@ -25,7 +25,9 @@ The extension uses this data only to remove blocked posts, native blocked-user p
 
 ## Data storage
 
-The extension stores the user's consent record, blocked usernames, subscription-linking preference, latest synchronization time, current-page removal counts, subscription-linking status counts, and latest forum address in Chrome's local extension storage. BGG profile identifier-to-name mappings are cached in BGG local storage for up to 30 days to avoid repeated profile requests.
+The extension stores the user's consent record, blocked usernames, subscription-linking preference, latest synchronization time, current-page removal counts, subscription-linking status counts, and latest discussion address in Chrome's local extension storage. BGG profile identifier-to-name mappings are cached in BGG local storage for up to 30 days to avoid repeated profile requests.
+
+The extension's page code is limited to canonical HTTPS addresses for those six BGG discussion-page families. It does not inject on BGG's home page, game pages, collection, store, account pages, forum indexes, or any other site. Chrome treats host permissions as origin-wide even when URL paths are declared; the single BGG host permission is used by the background worker only to identify supported open discussion tabs for automatic refresh after consent or an extension update.
 
 The extension does not store the BGG `GeekAuth` authorization value. It exists only in page memory while the live block list is synchronized and is never exposed to the extension's isolated content scripts.
 
