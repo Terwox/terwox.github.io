@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'en-US' }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#173f5f">
+    <title>{{ page.title }} · Terwox</title>
+    <meta name="description" content="{{ page.description }}">
+    <link rel="icon" type="image/png" href="{{ '/assets/images/bgg-hard-block/icon-128.png' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/bgg-hard-block.css?v=' | append: site.github.build_revision | relative_url }}">
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="{{ '/bgg-hard-block/' | relative_url }}">
+        <img src="{{ '/assets/images/bgg-hard-block/icon-128.png' | relative_url }}" width="52" height="52" alt="">
+        <span>
+          <strong>BGG Hard Block</strong>
+          <small>by Terwox</small>
+        </span>
+      </a>
+      <nav aria-label="BGG Hard Block">
+        <a href="{{ '/bgg-hard-block/' | relative_url }}">About</a>
+        <a href="{{ '/bgg-hard-block/privacy/' | relative_url }}">Privacy</a>
+        <a href="{{ '/bgg-hard-block/support/' | relative_url }}">Support</a>
+      </nav>
+    </header>
+
+    <main id="content">
+      {{ content }}
+    </main>
+
+    <footer>
+      <p>BGG Hard Block is an unofficial project by Terwox and is not affiliated with or endorsed by BoardGameGeek, LLC.</p>
+    </footer>
+  </body>
+</html>
