@@ -9,7 +9,7 @@ permalink: /bgg-hard-block/
 
 # Make BGG blocks actually disappear.
 
-<p class="lede">BGG Hard Block removes hidden-user placeholders, direct posts, and quotations from BoardGameGeek discussions while preserving the surrounding conversation.</p>
+<p class="lede">BGG Hard Block removes hidden-user placeholders, direct posts, quotations, and identifying names from BoardGameGeek discussions while preserving the surrounding conversation.</p>
 
 <div class="principles">
   <div><strong>Hard removal</strong>Blocked content is gone from the page, with no “show anyway” override.</div>
@@ -21,7 +21,9 @@ By default, the extension also adds Hidden Users to BoardGameGeek's separate use
 
 The extension stays inactive until the user reviews an in-extension disclosure and affirmatively agrees. It handles BoardGameGeek data only for its single stated purpose.
 
-Page access is limited to forum threads, GeekLists, images, videos, files, and individual blog posts—the places where BGG uses its shared discussion components. It does not run on BGG's home page, game pages, collection, store, account pages, or forum indexes.
+On forum indexes and post thumbs popovers, blocked profile names become inert **Blocked** labels while allowed names and the surrounding listing remain intact.
+
+Page access is limited to forum indexes, forum threads, GeekLists, images, videos, files, and individual blog posts—the places where BGG uses its shared discussion components. It does not run on BGG's home page, game pages, collection, store, account pages, or unrelated pages.
 
 <div class="button-row">
   <a class="button" href="{{ '/bgg-hard-block/privacy/' | relative_url }}">Privacy policy</a>
