@@ -16,8 +16,9 @@ For help, email [terwox@gmail.com](mailto:terwox@gmail.com). Include your Chrome
 1. Confirm you completed the extension's one-time privacy setup.
 2. Confirm you are signed in to BoardGameGeek.
 3. Supported discussion tabs refresh automatically after consent or an extension update. If a tab still appears stale, reload it once manually.
-4. Open the extension popup to check whether the live block list synchronized.
+4. Open the extension popup to check whether the Hidden Users list synchronized.
 5. If linking is unwanted, open the extension's Options page and turn off **Also block hidden users from subscriptions**.
+6. After updating to version 0.4.0, approve Chrome's request for access to `api.geekdo.com` if prompted. The extension uses that host only for the disclosed BoardGameGeek/Geekdo API requests.
 
 ## Manage your lists on BoardGameGeek
 
@@ -28,6 +29,6 @@ Turning off subscription linking stops future additions. It does not remove user
 
 ## Remove local data
 
-Uninstalling BGG Hard Block removes its Chrome extension storage. Chrome's site-data controls can clear the separate 30-day BGG profile-name cache. Uninstalling does not modify block lists already stored in the BoardGameGeek account.
+Uninstalling BGG Hard Block removes its Chrome extension storage, including the profile cache. Version 0.4.0 removes the obsolete cache that earlier versions placed in BGG site storage. Uninstalling does not add, remove, or otherwise modify Hidden Users or subscription blocks stored in the BoardGameGeek account.
 
 <div class="callout"><strong>No account support:</strong> Terwox cannot access, recover, or inspect your BoardGameGeek account or extension data.</div>
