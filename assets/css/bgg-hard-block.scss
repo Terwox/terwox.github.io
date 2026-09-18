@@ -175,6 +175,15 @@ h3 {
   color: $navy;
 }
 
+// Sits directly under the install row, so it stays quiet enough not to
+// compete with the buttons it qualifies.
+.install-note {
+  max-width: 720px;
+  margin-top: 14px;
+  color: $muted;
+  font-size: 14px;
+}
+
 li + li {
   margin-top: 8px;
 }

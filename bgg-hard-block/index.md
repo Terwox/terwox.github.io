@@ -1,15 +1,23 @@
 ---
 layout: bgg-hard-block
 title: BGG Hard Block
-description: A free, private Chrome extension that removes blocked users and their quotations from BoardGameGeek discussions.
+description: A free, open-source Chrome and Firefox extension that removes blocked users and their quotations from BoardGameGeek discussions.
 permalink: /bgg-hard-block/
 ---
 
-<p class="eyebrow">Free · private · no ads</p>
+<p class="eyebrow">Free · private · open source</p>
 
 # Make BGG blocks actually disappear.
 
 <p class="lede">BGG Hard Block removes hidden-user placeholders, direct posts, quotations, and identifying names from BoardGameGeek discussions while preserving the surrounding conversation.</p>
+
+<div class="button-row">
+  <a class="button" href="https://chromewebstore.google.com/detail/bgg-hard-block/hkbnpeohgacliadddhjoddiickjnlnfl">Add to Chrome</a>
+  <a class="button" href="https://addons.mozilla.org/firefox/addon/bgg-hard-block/">Add to Firefox</a>
+  <a class="button secondary" href="https://github.com/Terwox/bgg-hard-block">Read the source</a>
+</div>
+
+<p class="install-note">Firefox needs version 153 or newer, desktop only. BGG Hard Block is GPL-3.0 and has no build step, so the files in the repository are the files that run in the browser — what you install can be checked against what is published.</p>
 
 <div class="principles">
   <div><strong>Hard removal</strong>Blocked content is gone from the page, with no “show anyway” override.</div>
