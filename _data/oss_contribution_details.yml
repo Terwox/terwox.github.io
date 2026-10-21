@@ -1,0 +1,44 @@
+- repo: openclaw/openclaw
+  name: OpenClaw
+  what_it_is: A personal AI agent that works through messaging, tools, and automations across operating systems.
+  contribution: Stopped Claude command-line turns as soon as stream parsing rejects oversized output, preserving the real error instead of letting hidden work continue until a generic timeout. Added regression tests and documentation.
+  pull_requests:
+    - number: 159931
+      url: https://github.com/openclaw/openclaw/pull/159931
+      merged: Oct 21, 2026
+
+- repo: SenteLabsAI/OpenExecutive
+  name: OpenExecutive
+  what_it_is: An AI-powered virtual executive team built from one executive persona and eight specialist agents.
+  contribution: Repaired the contributor setup instructions so they run in Windows PowerShell 5.1 while remaining valid in modern PowerShell and Unix shells.
+  pull_requests:
+    - number: 139
+      url: https://github.com/SenteLabsAI/OpenExecutive/pull/139
+      merged: Sep 18, 2026
+
+- repo: logseq/logseq
+  name: Logseq
+  what_it_is: A privacy-first, open-source platform for knowledge management and collaboration.
+  contribution: Fixed the Android top bar so it respects the device status bar instead of overlapping system controls. Verified the repair across Android versions, rotation, and app lifecycle changes.
+  pull_requests:
+    - number: 13110
+      url: https://github.com/logseq/logseq/pull/13110
+      merged: Aug 26, 2026
+
+- repo: bourquep/mysa2mqtt
+  name: mysa2mqtt
+  what_it_is: A bridge that connects Mysa smart thermostats to Home Assistant and other home-automation systems through MQTT.
+  contribution: Prevented one thermostat's real-time connection failure from taking down the bridge, added capped retry backoff, and turned unhandled asynchronous failures into useful logs.
+  pull_requests:
+    - number: 130
+      url: https://github.com/bourquep/mysa2mqtt/pull/130
+      merged: Jul 19, 2026
+
+- repo: Yeachan-Heo/oh-my-codex
+  name: Oh My Codex
+  what_it_is: An orchestration layer for OpenAI Codex with hooks, agent teams, automation, and terminal interface features.
+  contribution: Made file-based state recovery accept valid JSON containing one UTF-8 byte-order mark, a format produced by Windows PowerShell and some editors, without weakening malformed-input checks.
+  pull_requests:
+    - number: 3169
+      url: https://github.com/Yeachan-Heo/oh-my-codex/pull/3169
+      merged: Jul 14, 2026

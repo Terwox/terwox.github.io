@@ -261,6 +261,134 @@ body {
 // Portfolio-specific styles
 // ============================================
 
+.oss-contributions {
+  margin: 3.5rem 0 4rem;
+}
+
+.oss-section-heading {
+  max-width: 70ch;
+  margin-bottom: 1.5rem;
+
+  h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    color: var(--color-text-muted);
+  }
+}
+
+.oss-scoreboard {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  overflow: hidden;
+  margin: 1.5rem 0 2.5rem;
+  background-color: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+}
+
+.oss-score {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-width: 0;
+  padding: clamp(1.25rem, 4vw, 2rem);
+
+  & + & {
+    border-left: 1px solid var(--color-border);
+  }
+}
+
+.oss-score-label {
+  max-width: 12ch;
+  color: var(--color-text);
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.oss-score-number {
+  color: var(--color-accent-light);
+  font-size: clamp(2.75rem, 9vw, 4.5rem);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.oss-project-list {
+  border-top: 1px solid var(--color-border);
+}
+
+.oss-project {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--color-border);
+
+  p {
+    max-width: 72ch;
+    margin-bottom: 0.7rem;
+  }
+}
+
+.oss-project-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.6rem;
+
+  h3 {
+    margin: 0;
+  }
+}
+
+.oss-pr-count {
+  flex: 0 0 auto;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.oss-pr-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  padding: 0;
+  margin: 1rem 0 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+}
+
+.oss-source {
+  margin-top: 1rem;
+  color: var(--color-text-muted) !important;
+  font-size: 0.85rem;
+}
+
+@media screen and (max-width: 36em) {
+  .oss-scoreboard {
+    grid-template-columns: 1fr;
+  }
+
+  .oss-score {
+    & + & {
+      border-top: 1px solid var(--color-border);
+      border-left: 0;
+    }
+  }
+
+  .oss-project-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+}
+
 // Portfolio card grid
 .portfolio-grid {
   display: grid;

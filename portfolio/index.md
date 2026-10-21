@@ -4,9 +4,56 @@ title: Portfolio
 description: Selected work samples
 ---
 
-# Portfolio
+# Researcher who builds
 
-A selection of research projects and data visualization work spanning human factors, healthcare research, enterprise software, and civic technology.
+I am a mixed-methods researcher and human-factors psychologist. I study how people understand complex systems, then build the methods, analyses, and software needed to make the answer useful. My work spans human-computer interaction, healthcare, enterprise software, and civic technology.
+
+<section class="oss-contributions" aria-labelledby="open-source-heading">
+
+<div class="oss-section-heading">
+<h2 id="open-source-heading">Open-source work</h2>
+<p>When a tool I rely on fails in a way I can diagnose, I try to fix the failure upstream. These are merged contributions to projects I do not own.</p>
+</div>
+
+<div class="oss-scoreboard" aria-label="Open-source contribution totals">
+<div class="oss-score">
+<span class="oss-score-label">Projects contributed to</span>
+<strong class="oss-score-number">{{ site.data.oss_contributions.summary.totalProjects }}</strong>
+</div>
+<div class="oss-score">
+<span class="oss-score-label">Merged pull requests</span>
+<strong class="oss-score-number">{{ site.data.oss_contributions.summary.totalPRsMerged }}</strong>
+</div>
+</div>
+
+<div class="oss-project-list">
+{% for contribution in site.data.oss_contributions.contributions %}
+{% assign detail = site.data.oss_contribution_details | where: "repo", contribution.repo | first %}
+<article class="oss-project">
+<header class="oss-project-header">
+<h3><a href="{{ contribution.repoURL }}">{{ detail.name | default: contribution.repoName }}</a></h3>
+<span class="oss-pr-count">{{ contribution.prsMerged }} merged {% if contribution.prsMerged == 1 %}PR{% else %}PRs{% endif %}</span>
+</header>
+<p><strong>What it is:</strong> {{ detail.what_it_is | default: contribution.description }}</p>
+{% if detail.contribution %}
+<p><strong>What I changed:</strong> {{ detail.contribution }}</p>
+{% endif %}
+{% if detail.pull_requests %}
+<ul class="oss-pr-links">
+{% for pull_request in detail.pull_requests %}
+<li><a href="{{ pull_request.url }}">Merged pull request #{{ pull_request.number }}</a><span aria-hidden="true"> · </span>{{ pull_request.merged }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+</article>
+{% endfor %}
+</div>
+
+<p class="oss-source">Counts refresh weekly from merged work on <a href="https://github.com/Terwox">GitHub profile Terwox</a>.</p>
+
+</section>
+
+## Selected research work
 
 <div class="portfolio-grid">
 

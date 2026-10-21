@@ -1,0 +1,60 @@
+{
+  "username": "Terwox",
+  "generatedAt": "2026-10-21T08:26:35.866889392Z",
+  "summary": {
+    "totalProjects": 5,
+    "totalPRsMerged": 5
+  },
+  "contributions": [
+    {
+      "repo": "openclaw/openclaw",
+      "owner": "openclaw",
+      "repoName": "openclaw",
+      "description": "The AI that really does things. Any OS. Any Platform. The lobster way. 🦞 ",
+      "repoURL": "https://github.com/openclaw/openclaw",
+      "prsMerged": 1,
+      "firstContribution": "2026-10-21T07:49:48Z",
+      "lastContribution": "2026-10-21T07:49:48Z"
+    },
+    {
+      "repo": "SenteLabsAI/OpenExecutive",
+      "owner": "SenteLabsAI",
+      "repoName": "OpenExecutive",
+      "description": "AI-powered virtual executive team — a single coherent executive persona backed by 8 specialist agents (FastAPI + Next.js).",
+      "repoURL": "https://github.com/SenteLabsAI/OpenExecutive",
+      "prsMerged": 1,
+      "firstContribution": "2026-09-18T19:02:50Z",
+      "lastContribution": "2026-09-18T19:02:50Z"
+    },
+    {
+      "repo": "logseq/logseq",
+      "owner": "logseq",
+      "repoName": "logseq",
+      "description": "A privacy-first, open-source platform for knowledge management and collaboration. Download link:  http://github.com/logseq/logseq/releases. roadmap: https://logseq.io/p/NX4mc_ggEV",
+      "repoURL": "https://github.com/logseq/logseq",
+      "prsMerged": 1,
+      "firstContribution": "2026-08-26T09:51:33Z",
+      "lastContribution": "2026-08-26T09:51:33Z"
+    },
+    {
+      "repo": "bourquep/mysa2mqtt",
+      "owner": "bourquep",
+      "repoName": "mysa2mqtt",
+      "description": "Expose Mysa smart thermostats to Home Assistant and other home automation platforms via MQTT.",
+      "repoURL": "https://github.com/bourquep/mysa2mqtt",
+      "prsMerged": 1,
+      "firstContribution": "2026-07-19T13:49:48Z",
+      "lastContribution": "2026-07-19T13:49:48Z"
+    },
+    {
+      "repo": "Yeachan-Heo/oh-my-codex",
+      "owner": "Yeachan-Heo",
+      "repoName": "oh-my-codex",
+      "description": "OmX - Oh My codeX: Your codex is not alone. Add hooks, agent teams, HUDs, and so much more.",
+      "repoURL": "https://github.com/Yeachan-Heo/oh-my-codex",
+      "prsMerged": 1,
+      "firstContribution": "2026-07-14T17:30:18Z",
+      "lastContribution": "2026-07-14T17:30:18Z"
+    }
+  ]
+}
