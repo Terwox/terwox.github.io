@@ -1,6 +1,6 @@
 {
   "username": "Terwox",
-  "generatedAt": "2026-10-21T08:26:35.866889392Z",
+  "generatedAt": "2026-11-15T16:23:07.893971443Z",
   "summary": {
     "totalProjects": 5,
     "totalPRsMerged": 5
@@ -17,11 +17,11 @@
       "lastContribution": "2026-10-21T07:49:48Z"
     },
     {
-      "repo": "SenteLabsAI/OpenExecutive",
-      "owner": "SenteLabsAI",
+      "repo": "ForeactLabs/OpenExecutive",
+      "owner": "ForeactLabs",
       "repoName": "OpenExecutive",
       "description": "AI-powered virtual executive team — a single coherent executive persona backed by 8 specialist agents (FastAPI + Next.js).",
-      "repoURL": "https://github.com/SenteLabsAI/OpenExecutive",
+      "repoURL": "https://github.com/ForeactLabs/OpenExecutive",
       "prsMerged": 1,
       "firstContribution": "2026-09-18T19:02:50Z",
       "lastContribution": "2026-09-18T19:02:50Z"
