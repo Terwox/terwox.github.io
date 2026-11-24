@@ -8,16 +8,16 @@ description: Mixed Methods Researcher
 
 [james.myers@usd.edu](mailto:james.myers@usd.edu) | they/them
 
-Mixed methods researcher with a Ph.D. in Human Factors Psychology who bridges quantitative rigor with qualitative depth. I turn ambiguous research questions into decisions: persona frameworks that product teams actually use, eye tracking programs that scale org-wide, and statistical models that predict real outcomes. 5+ years leading UX research at Cigna for specialty pharmacy products serving 500K+ members. Ph.D. completed April 2026.
+Mixed methods researcher with a Ph.D. in Human Factors Psychology who bridges quantitative rigor with qualitative depth. I turn ambiguous research questions into decisions: persona frameworks that product teams actually use, eye tracking programs that scale org-wide, and statistical models that predict real outcomes. 7 years leading UX research at Cigna for specialty pharmacy products serving 500K+ members. Ph.D. completed April 2026.
 
 ---
 
 ## Experience
 
 ### Cigna
-**Senior Mixed Methods Researcher** | Remote | July 2019 - Present
+**Senior Mixed Methods Researcher** | Remote | July 2019 - November 2026
 
-- Own research strategy for specialty pharmacy digital products, aligning studies to quarterly OKRs and translating findings into product roadmap priorities
+- Owned research strategy for specialty pharmacy digital products, aligning studies to quarterly OKRs and translating findings into product roadmap priorities
 - Created behavioral persona framework using Latent Profile Analysis that replaced outdated demographic segments; now used by product, design, and content teams to inform feature prioritization
 - Led 200+ moderated usability sessions identifying critical friction points in medication adherence workflows for 500K+ specialty pharmacy members
 - Built eye tracking capability from zero: procured equipment, developed protocols, trained researchers — now standard practice for evaluating high-stakes interfaces
